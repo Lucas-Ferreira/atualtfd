@@ -1,0 +1,21 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="d-flex justify-content-center bg-white rounded p-3 shadow">
+      <%= form_with model: @vehicle, class:"row g-1 w-10", local: true do |form| %>
+        <%= form.label :modelo %>
+        <%= form.text_field :modelo, class:"form-control form-control-sm col-auto" %>
+        <div><%= form.label :ano %></div>
+        <%= form.text_field :ano, class:"form-control form-control-sm col-auto" %>
+        <div><%= form.label :placa %></div>
+        <%= form.text_field :placa, class:"form-control form-control-sm col-auto" %>
+        <div><%= form.label :capacidade %></div>
+        <%= form.text_field :capacidade, class:"form-control form-control-sm col-auto" %>
+        <div><%= form.label :status %></div>
+        <%= form.select :status,["Liberado", "Em Manutencão", "Defeito"], class:"form-control form-control-sm col-auto" %>
+        <div><%= form.label :montadora %></div>
+        <%= form.select :montadora,["Pegeout", "Marcopolo", "Fiat", "GM", "Citroen", "Volkswagen"], class:"form-control mb-3" %>
+        <div><%= form.submit "Adicionar", class: "btn btn-primary mt-2 text-center" %></div>
+      <% end %>
+      </div>
+    </div>

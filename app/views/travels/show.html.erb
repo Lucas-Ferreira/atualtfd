@@ -1,0 +1,109 @@
+<%= render "shared/flashes" %>
+<%= render "shared/navbar2" %>
+
+<div class="container mt-5">
+<!-- Init First Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="main-card mb-3 card">
+        <div class="card-header">Pacientes
+          <div class="ml-2">
+          <!-- Button trigger modal -->
+        <button type="button" id="mymodal" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModall">
+          +
+        </button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table
+            class="align-middle mb-0 table table-borderless table-striped table-hover">
+            <thead>
+              <tr>
+                <th class="text-center">#</th>
+                <th>Nome</th>
+                <th class="text-center">CPF</th>
+                <th class="text-center">Cel</th>
+                <th class="text-center">Acompanhante</th>
+              </tr>
+            </thead>
+            <tbody>
+             <% @patients.each do |u| %>
+              <tr>
+                <td class="text-center text-muted"><%= u.id %></td>
+                <td>
+                  <div class="widget-content p-0">
+                    <div class="widget-content-wrapper">
+                      <div class="widget-content-left mr-3">
+                        <div class="widget-content-left">
+                          <img width="40" class="rounded-circle" alt="">
+                        </div>
+                      </div>
+                      <div class="widget-content-left flex2">
+                        <div class="widget-heading"><%= u.name %></div>
+                        <div class="widget-subheading opacity-7"></div>
+                      </div>
+                      <td class="text-center"><%= u.cpf%></td>
+                      <td class="text-center"><%= u.cel%></td>
+                      <td class="text-center"><%= u.acompanhante%></td>
+                    </div>
+                  </div>
+                </td>
+                </td>
+                <td class="text-center">
+                   <%= link_to "Deletar", [@travel, u], data: { turbo_method: :delete, turbo_confirm: "Tem certeza?"}, class: "btn-wide btn btn-danger" %>
+          <button class="btn-wide btn btn-success">Edit</button>
+                </td>
+              </tr>
+              <% end %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-block text-center card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Finaly First Table -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="d-flex justify-content-center bg-white rounded p-5 shadow">
+        <%#= form_with model: [@travel,@patient], class:"row g-1 w-10", local: true do |form| %>
+         <%#= form.label :name %>
+         <%#= form.text_field :name, class:"form-control form-control-sm col-auto" %>
+         <%#= form.label :cel %>
+         <%#= form.text_field :cel, class:"form-control form-control-sm col-auto" %>
+          <%#= form.label :cpf %>
+         <%#= form.text_field :cpf, class:"form-control form-control-sm col-auto" %>
+          <%#= form.label :city %>
+         <%#= form.text_field :city, class:"form-control form-control-sm col-auto" %>
+          <%#= form.label :acompanhantes %>
+         <%#= form.text_field :acompanhantes, class:"form-control form-control-sm col-auto" %>
+        <div><%#= form.submit "Adicionar", class: "btn btn-primary mt-2 text-center" %></div>
+      <%# end %>
+
+      <%= simple_form_for([@travel,@patient], :remote=>true) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :cel %>
+        <%= f.button :submit %>
+      <% end %>
+
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- End Modal Add Rotum -->

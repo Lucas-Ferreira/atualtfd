@@ -1,0 +1,16 @@
+<%= render "shared/navbar2" %>
+
+<h1>Novssso user</h1>
+<div class="d-flex justify-content-center bg-white rounded p-3 shadow">
+<%= form_with url: "/users", class:"row g-1 w-10", method: :post do |form| %>
+  <div><%= form.label :email %></div>
+  <%= form.text_field :email, class:"form-control col-auto" %>
+  <div><%= form.label :password %></div>
+  <%= form.text_field :password, class:"form-control col-auto" %>
+  <div><%= form.label :password_confirmation %></div>
+  <%= form.text_field :password_confirmation, class:"form-control col-auto" %>
+  <div><%= form.label :role %></div>
+  <%= form.select :role,["true","false"], class:"form-control col-auto" %>
+  <div><%= form.submit "Salvar", class: "btn btn-primary mt-2 text-center" %></div>
+<% end %>
+</div>

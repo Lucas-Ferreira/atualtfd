@@ -1,0 +1,13 @@
+<%= render "shared/navbar2" %>
+<%= render "shared/flashes" %>
+<div class="container">
+<h1>New account</h1>
+
+<%= render "form", account: @account %>
+
+<br>
+
+<div>
+  <%= link_to "Back to accounts", accounts_path %>
+</div>
+</div>

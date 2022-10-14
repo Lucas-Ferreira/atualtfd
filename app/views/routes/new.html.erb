@@ -1,0 +1,46 @@
+<%= render "shared/flashes" %>
+<%= render "shared/navbar2" %>
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+  <% if @rotum.errors.any? %>
+      <h3>The following errors prevented the article from being saved:</h3>
+      <ul>
+        <% @rotum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+      <div class="d-flex justify-content-center bg-white rounded p-5 shadow">
+      <%= form_with model: @rotum, url: { action: "create" }, class:"row g-1 w-10", local: true do |form| %>
+        <%= form.label :origem %>
+        <%= form.text_field :origem, class:"form-control form-control-sm col-auto" %>
+        <% @rotum.errors.full_messages_for(:origem).each do |message| %>
+        <p class="text-danger"><%= message %></p>
+        <% end %>
+        <div><%= form.label :destino %></div>
+        <%= form.text_field :destino, class:"form-control form-control-sm col-auto" %>
+        <% @rotum.errors.full_messages_for(:destino).each do |message| %>
+        <p class="text-danger"><%= message %></p>
+        <% end %>
+        <div><%= form.label :especialidade %></div>
+        <%= form.text_field :especialidade, class:"form-control form-control-sm col-auto" %>
+        <div><%= form.label :capacidade %></div>
+        <%= form.text_field :capacidade, class:"form-control form-control-sm col-auto" %>
+        <div><%= form.submit "Adicionar", class: "btn btn-primary mt-2 text-center" %></div>
+      <% end %>
+      </div>
+
+ <h1></h1>
+ <%#= simple_form_for @rotum, class:"row g-1 w-10", validate: true do |f| %>
+          <%#= f.input :origem, label: 'Origem' %>
+          <%#= f.input :destino, label: 'Destino' %>
+          <%#= f.input :especialidade, label: 'Especialidade' %>
+          <%#= f.input :capacidade, label: 'Capacidade' %>
+          <%#= f.submit "Criar",  class: "btn btn-primary" %>
+      <%# end %>
+
+      <div><h3><%#= @rotums.origem %></h3></div>
+      <div><%#= link_to "Show", rotum_path(@rotums.id)  %></div>
+    </div>

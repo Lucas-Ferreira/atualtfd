@@ -1,0 +1,20 @@
+<%= render "shared/flashes" %>
+<%= render "shared/navbar2" %>
+
+<div class="container mt-5">
+  <% @rotums.each do |r| %>
+  <div class="card-product mt-5">
+    <img
+      src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+    <div class="card-product-infos mt-4 mb-4">
+      <p>Origem:</p>
+      <h2><%= r.origem %></h2>
+      <p>Destino:</p>
+      <h2><%= r.destino %></h2>
+      <p><strong>Especialidade: </strong><%= r.especialidade %></p>
+      <%= link_to "Visualizar", route_path(r), class: "btn btn-success btn-sm m-2" %>
+      <%= link_to "Deletar", route_path(r), data: { method: :delete }, class: "btn btn-danger btn-sm m-1" %>
+    </div>
+  </div>
+  <% end %>
+</div>

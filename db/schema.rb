@@ -10,9 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_23_142427) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_14_014906) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.string "subdomain"
+    t.string "domain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "confirmations", force: :cascade do |t|
+    t.boolean "present"
+    t.bigint "patient_id", null: false
+    t.bigint "travel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "present_two"
+    t.index ["patient_id"], name: "index_confirmations_on_patient_id"
+    t.index ["travel_id"], name: "index_confirmations_on_travel_id"
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.string "name"
+    t.bigint "route_id", null: false
+    t.bigint "travel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["route_id"], name: "index_days_on_route_id"
+    t.index ["travel_id"], name: "index_days_on_travel_id"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "name"
+    t.string "cel"
+    t.string "cpf"
+    t.string "acompanhante"
+    t.string "destino"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "travel_id"
+    t.index ["travel_id"], name: "index_patients_on_travel_id"
+  end
+
+  create_table "route_vehicles", force: :cascade do |t|
+    t.bigint "route_id", null: false
+    t.bigint "vehicle_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["route_id"], name: "index_route_vehicles_on_route_id"
+    t.index ["vehicle_id"], name: "index_route_vehicles_on_vehicle_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "origem"
+    t.string "destino"
+    t.string "especialidade"
+    t.string "capacidade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "travel_vehicles", force: :cascade do |t|
+    t.bigint "travel_id", null: false
+    t.bigint "vehicle_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["travel_id"], name: "index_travel_vehicles_on_travel_id"
+    t.index ["vehicle_id"], name: "index_travel_vehicles_on_vehicle_id"
+  end
+
+  create_table "travels", force: :cascade do |t|
+    t.string "status"
+    t.string "hr_partida"
+    t.string "hr_volta"
+    t.string "hr_final"
+    t.bigint "route_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["route_id"], name: "index_travels_on_route_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +101,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_142427) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "role"
+    t.integer "account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string "modelo"
+    t.string "placa"
+    t.string "capacidade"
+    t.string "ano"
+    t.string "montadora"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_vehicles_on_user_id"
+  end
+
+  add_foreign_key "confirmations", "patients"
+  add_foreign_key "confirmations", "travels"
+  add_foreign_key "days", "routes"
+  add_foreign_key "days", "travels"
+  add_foreign_key "route_vehicles", "routes"
+  add_foreign_key "route_vehicles", "vehicles"
+  add_foreign_key "travel_vehicles", "travels"
+  add_foreign_key "travel_vehicles", "vehicles"
+  add_foreign_key "travels", "routes"
+  add_foreign_key "vehicles", "users"
 end

@@ -14,7 +14,7 @@ class TravelsController < ApplicationController
 
   def create
     @travel = Travel.new(travel_params)
-    @rotum = Route.find(params[:rotum_id])
+    @rotum = Route.find(params[:route_id])
     @travel.route = @rotum
     @travel.status = params[:travel][:status]
     @vehicle = Vehicle.find(params[:travel][:vehicle])

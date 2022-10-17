@@ -1,1 +1,1 @@
-console.log("teste");
+window.location.reload();

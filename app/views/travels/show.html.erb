@@ -50,7 +50,7 @@
                 </td>
                 </td>
                 <td class="text-center">
-                   <%= link_to "Deletar", [@travel, u], data: { turbo_method: :delete, turbo_confirm: "Tem certeza?"}, class: "btn-wide btn btn-danger" %>
+                   <%= link_to "Deletar", [@travel, u], data: { method: :delete, turbo_confirm: "Tem certeza?"}, class: "btn-wide btn btn-danger" %>
           <button class="btn-wide btn btn-success">Edit</button>
                 </td>
               </tr>
@@ -99,7 +99,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>

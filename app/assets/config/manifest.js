@@ -4,4 +4,5 @@
 //= link jquery.js
 //= link jquery_ujs
 //= link app.js
-//= link reloadpage.js
+//= link bootstrap.bundle.min
+//= link scripts.js

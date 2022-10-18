@@ -24,6 +24,7 @@
                 <th class="text-center">CPF</th>
                 <th class="text-center">Cel</th>
                 <th class="text-center">Acompanhante</th>
+                <th class="text-center">Destino</th>
               </tr>
             </thead>
             <tbody>
@@ -45,6 +46,7 @@
                       <td class="text-center"><%= u.cpf%></td>
                       <td class="text-center"><%= u.cel%></td>
                       <td class="text-center"><%= u.acompanhante%></td>
+                      <td class="text-center"><%= u.destino%></td>
                     </div>
                   </div>
                 </td>
@@ -92,6 +94,8 @@
       <%= simple_form_for([@travel,@patient], :remote=>true) do |f| %>
         <%= f.input :name, label: "Nome" %>
         <%= f.input :cel, label: "Celular" %>
+        <%= f.input :acompanhante, label: "Acompanhante" %>
+        <%= f.input :destino, label: "Destino" %>
         </div>
       </div>
       <div class="modal-footer">

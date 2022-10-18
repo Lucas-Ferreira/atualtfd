@@ -1,12 +1,17 @@
 <div>
 <% if @state == true %>
-<div class="center">
+<div class="center" style="text-align: center;">
   <%= image_tag 'tick.png',
     style: 'width: 5rem; height: auto;'
     %>
-  <h3>Cadastro Efetuado com Sucesso</h3>
+    <div class="mt-3"><h3>Cadastro Efetuado com Sucesso</h3></div>
   </div>
 <% else %>
-  <h1>Algum erro ocorreu</h1>
+<div class="center" style="text-align: center;">
+  <%= image_tag 'cancel.png',
+    style: 'width: 5rem; height: auto;'
+    %>
+    <div class="mt-3"><h3>Cadastro não realizado, verifique os dados</h3></div>
+</div>
 <% end %>
 </div>

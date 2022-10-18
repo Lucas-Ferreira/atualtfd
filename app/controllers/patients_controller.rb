@@ -37,7 +37,7 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :cel, :cpf, :city, :acompanhantes, :destino, :travel_id)
+    params.require(:patient).permit(:name, :cel, :cpf, :city, :acompanhante, :destino, :travel_id)
   end
 
 #  def set_patient

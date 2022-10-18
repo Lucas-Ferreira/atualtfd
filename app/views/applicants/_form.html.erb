@@ -1,5 +1,12 @@
+<div>
 <% if @state == true %>
-  <h1>Cadastro Efetuado com Sucesso</h1>
+<div class="center">
+  <%= image_tag 'tick.png',
+    style: 'width: 5rem; height: auto;'
+    %>
+  <h3>Cadastro Efetuado com Sucesso</h3>
+  </div>
 <% else %>
   <h1>Algum erro ocorreu</h1>
 <% end %>
+</div>

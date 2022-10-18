@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="main-card mb-3 card">
-        <div class="card-header">Pacientes
+      <div class="card-header">
           <div class="ml-2">
           <!-- Button trigger modal -->
         <button type="button" id="mymodal" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModall">
@@ -50,8 +50,8 @@
                 </td>
                 </td>
                 <td class="text-center">
-                   <%= link_to "Deletar", [@travel, u], data: { method: :delete, turbo_confirm: "Tem certeza?"}, class: "btn-wide btn btn-danger" %>
-          <button class="btn-wide btn btn-success">Edit</button>
+                   <%= link_to "Deletar", [@travel, u], data: { method: :delete, turbo_confirm: "Tem certeza?"}, class: "btn-wide btn btn-danger btn-sm" %>
+          <button class="btn-wide btn btn-success btn-sm">Edit</button>
                 </td>
               </tr>
               <% end %>
@@ -74,7 +74,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <div class="d-flex justify-content-center bg-white rounded p-5 shadow">
+      <div class="d-flex justify-content-center bg-white p-5">
         <%#= form_with model: [@travel,@patient], class:"row g-1 w-10", local: true do |form| %>
          <%#= form.label :name %>
          <%#= form.text_field :name, class:"form-control form-control-sm col-auto" %>
@@ -90,17 +90,14 @@
       <%# end %>
 
       <%= simple_form_for([@travel,@patient], :remote=>true) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :cel %>
-        <%= f.button :submit %>
-      <% end %>
-
-
+        <%= f.input :name, label: "Nome" %>
+        <%= f.input :cel, label: "Celular" %>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <%= f.button :submit, "Enviar", class: "btn btn-primary" %>
+      <% end %>
       </div>
     </div>
   </div>

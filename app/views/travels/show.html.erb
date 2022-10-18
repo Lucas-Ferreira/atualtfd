@@ -19,7 +19,7 @@
             class="align-middle mb-0 table table-borderless table-striped table-hover">
             <thead>
               <tr>
-                <th class="text-center">#</th>
+                <th class="text-center">Id</th>
                 <th>Nome</th>
                 <th class="text-center">CPF</th>
                 <th class="text-center">Cel</th>
@@ -93,6 +93,7 @@
 
       <%= simple_form_for([@travel,@patient], :remote=>true) do |f| %>
         <%= f.input :name, label: "Nome" %>
+        <%= f.input :cpf, label: "CPF" %>
         <%= f.input :cel, label: "Celular" %>
         <%= f.input :acompanhante, label: "Acompanhante" %>
         <%= f.input :destino, label: "Destino" %>

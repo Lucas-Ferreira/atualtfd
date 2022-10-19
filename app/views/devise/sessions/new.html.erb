@@ -8,9 +8,7 @@
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                    style="width: 185px;" alt="logo">
-                  <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                <%= image_tag 'inagesp.png', style: 'width: 185px' %>
                 </div>
                   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
                   <div class="form-outline mb-4">
@@ -25,21 +23,15 @@
                   </div>
                   <div class="text-center pt-1 mb-5 pb-1">
                   <%= f.button :submit, "Log in", id: "submit", class: "btn btn-lg btn-primary" %>
-                    <a class="text-muted" href="#!">Forgot password?</a>
+                    <a class="text-muted" href="#!">Esqueceu sua senha?</a>
                   </div>
                    <% end %>
-                  <div class="d-flex align-items-center justify-content-center pb-4">
-                    <p class="mb-0 me-2">Don't have an account?</p>
-                    <button type="button" class="btn btn-outline-danger">Create new</button>
-                  </div>
               </div>
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
               <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 class="mb-4">We are more than just a company</h4>
-                <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <h4 class="mb-4">Para a gestão, nada é impossível</h4>
+                <p class="small mb-0">Otimização com transparência e agilidade, gerando informação qualificada e dados técnicos. Ferramenta indispensável para bons resultados.</p>
               </div>
             </div>
           </div>

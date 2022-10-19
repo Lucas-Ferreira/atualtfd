@@ -6,3 +6,4 @@
 //= link app.js
 //= link bootstrap.bundle.min
 //= link scripts.js
+//= require turbolinks

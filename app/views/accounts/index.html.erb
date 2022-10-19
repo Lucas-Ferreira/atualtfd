@@ -1,14 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<%= render "shared/flashes" %>
+<%= render "shared/navbar2" %>
+<div class="container mt-5">
+<div class="row">
+						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
 
-<h1>Accounts</h1>
-
-<div id="accounts">
-  <% @accounts.each do |account| %>
-    <%= render account %>
-    <p>
-      <%= link_to "Show this account", account %>
-    </p>
-  <% end %>
+									<h5 class="card-title mb-0">Veículos Cadastrados</h5>
+								</div>
+								<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>Id</th>
+											<th class="d-none d-xl-table-cell">Município</th>
+											<th class="d-none d-xl-table-cell">Subdomínio</th>
+                      <th class="d-none d-xl-table-cell"></th>
+										</tr>
+									</thead>
+									<tbody>
+                    <% @accounts.each do |a| %>
+										<tr>
+											<td> <%= a.id %></td>
+											<td class="d-none d-xl-table-cell"><%= a.name %></td>
+											<td class="d-none d-xl-table-cell"><%= a.subdomain %></td>
+                      <td class="d-none d-md-table-cell">
+                      <%= link_to "Deletar", account_path(a), data: { method: :delete, confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
+                      <%= link_to "Editar", edit_account_path(a), class: "btn btn-warning btn-sm" %>
+                      </td>
+										</tr>
+                    <% end %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+      </div>
 </div>
-
-<%= link_to "New account", new_account_path %>
+</div>

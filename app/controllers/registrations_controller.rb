@@ -12,12 +12,14 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.create(sign_up_params)
+    @role = params[:role]
     #@user.account_id = ActsAsTenant.current_tenant.id
     if ActsAsTenant.current_tenant.nil?
       @user.account_id = "3"
     else
       @user.account_id = ActsAsTenant.current_tenant.id
     end
+    @role === "Motorista" ? (@user.role = false) : (@user.role = true)
     respond_to do |format|
       if @user.save
         format.html { redirect_to root_path, notice: "Usuário #{@user.email} Criado com sucesso" }

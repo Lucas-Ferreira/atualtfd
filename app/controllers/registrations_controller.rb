@@ -15,7 +15,7 @@ class RegistrationsController < ApplicationController
     @role = params[:role]
     #@user.account_id = ActsAsTenant.current_tenant.id
     if ActsAsTenant.current_tenant.nil?
-      @user.account_id = "3"
+      @user.account_id = "2"
     else
       @user.account_id = ActsAsTenant.current_tenant.id
     end

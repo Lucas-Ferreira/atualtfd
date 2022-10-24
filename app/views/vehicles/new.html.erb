@@ -27,7 +27,35 @@
         <div><%= form.label :status %></div>
         <%= form.select :status,["Liberado", "Manutencão", "Defeito"], class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :montadora %></div>
-        <%= form.select :montadora,["Pegeout", "Marcopolo", "Fiat", "GM", "Citroen", "Volkswagen"], class:"form-control mb-3" %>
+        <%= form.select :montadora,
+        ["Audi",
+        "BMW",
+        "Chery",
+        "Chevrolet",
+        "Chrysler",
+        "Citroën",
+        "Cross Lander",
+        "Fiat",
+        "Ford",
+        "Honda",
+        "Hyundai",
+        "Iveco",
+        "Jac",
+        "Jeep",
+        "Kia Motors",
+        "Land Rover",
+        "Mercedes-Benz",
+        "Mitsubishi",
+        "Nissan",
+        "Peugeot",
+        "Renault",
+        "Suzuki",
+        "TAC",
+        "Toyota",
+        "Troller",
+        "Volkswagen",
+        "Volvo",
+          ], class:"form-control mb-3" %>
         <div><%= form.submit "Adicionar", class: "btn btn-primary mt-2 text-center" %></div>
       <% end %>
 

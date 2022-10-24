@@ -56,10 +56,10 @@
         "Volkswagen",
         "Volvo",
           ], class:"form-control mb-3" %>
+        <div><%= form.label :motorista %></div>
+        <%= form.select :motorista, @array_motorista, class:"form-control form-control-sm col-auto" %>
         <div><%= form.submit "Adicionar", class: "btn btn-primary mt-2 text-center" %></div>
       <% end %>
-
-
       </div>
     </div>
 

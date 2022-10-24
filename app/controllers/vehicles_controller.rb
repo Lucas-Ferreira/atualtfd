@@ -11,11 +11,14 @@ class VehiclesController < ApplicationController
   def new
     @vehicle = Vehicle.new
     @vehicles = Vehicle.all
+    @array = User.where(role: "false")
+    @array_motorista = []
+    @array.each {|n| @array_motorista << n.email}
   end
 
   def create
     @vehicle = Vehicle.new(vehicle_params)
-    @vehicle.user_id = 1
+    #@vehicle.user_id = 1
     if @vehicle.save!
       redirect_to vehicles_path, notice: "Criado com sucesso"
     else

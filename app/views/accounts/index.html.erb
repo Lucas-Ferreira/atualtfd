@@ -26,6 +26,7 @@
                       <td class="d-none d-md-table-cell">
                       <%= link_to "Deletar", account_path(a), data: { method: :delete, confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
                       <%= link_to "Editar", edit_account_path(a), class: "btn btn-warning btn-sm" %>
+                      <%= link_to "Abrir", account_path(a), class: "btn btn-primary btn-sm" %>
                       </td>
 										</tr>
                     <% end %>

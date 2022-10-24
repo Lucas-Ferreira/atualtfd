@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "users", to: "registrations#index"
     post "sign_up", to: "registrations#create"
+    post "admin_account", to: "registrations#create_admin_account"
     get "new_sign_up", to: "registrations#new", as: :new_sign_up
     get "edit/:id", to: "registrations#edit", as: :user_edit
     patch "update/:id", to: "registrations#update", as: :user_update

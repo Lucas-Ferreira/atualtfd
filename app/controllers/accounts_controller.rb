@@ -8,6 +8,9 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1 or /accounts/1.json
   def show
+    @array = Account.all
+    @teste = []
+    @array.each {|n| @teste << n.name}
   end
 
   # GET /accounts/new

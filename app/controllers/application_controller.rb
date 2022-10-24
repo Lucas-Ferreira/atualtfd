@@ -6,11 +6,6 @@ class ApplicationController < ActionController::Base
   #end
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
-  def after_sign_in_path_for(resource)
-    user_profile_path(current_user)
-  end
-
   # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   # def user_not_authorized

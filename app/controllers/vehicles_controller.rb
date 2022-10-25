@@ -47,7 +47,7 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.permit(:montadora, :modelo, :ano, :placa, :capacidade, :status, :user_id, :account_id, :motorista)
+    params.require(:vehicle).permit(:montadora, :modelo, :ano, :placa, :capacidade, :status, :user_id)
   end
 
   def set_vehicle

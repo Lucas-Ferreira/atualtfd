@@ -5,7 +5,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    raise
+
   end
 
   def new
@@ -47,7 +47,7 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:montadora, :modelo, :ano, :placa, :capacidade, :status, :user_id, :account_id, :motorista)
+    params.permit(:montadora, :modelo, :ano, :placa, :capacidade, :status, :user_id, :account_id, :motorista)
   end
 
   def set_vehicle

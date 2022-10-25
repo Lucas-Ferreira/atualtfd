@@ -6,4 +6,6 @@ class Vehicle < ApplicationRecord
   has_many :travel, through: :travel_vehicles
   validates :modelo, presence: true
   validates :ano, presence: true
+  belongs_to :account, optional: true
+  acts_as_tenant(:account)
 end

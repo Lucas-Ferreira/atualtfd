@@ -19,6 +19,7 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     #@vehicle.user_id = 1
+    @vehicle.user_id = current_user.id
     if @vehicle.save!
       redirect_to vehicles_path, notice: "Criado com sucesso"
     else
@@ -46,7 +47,7 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:montadora, :modelo, :ano, :placa, :capacidade, :status, :user_id)
+    params.require(:vehicle).permit(:montadora, :modelo, :ano, :placa, :capacidade, :status, :user_id, :account_id, :motorista)
   end
 
   def set_vehicle

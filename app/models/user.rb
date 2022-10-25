@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :vehicles
-  belongs_to :account, optional: true
+  belongs_to :account
   acts_as_tenant(:account)
 end

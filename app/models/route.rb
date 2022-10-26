@@ -6,5 +6,5 @@ class Route < ApplicationRecord
   has_many :travels, dependent: :destroy
   validates :origem, presence: true
   validates :destino, presence: true
-
+  acts_as_tenant(:account)
 end

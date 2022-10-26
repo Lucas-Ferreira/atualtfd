@@ -38,11 +38,13 @@ class RegistrationsController < ApplicationController
   end
 
   def create_admin_account
+    ActsAsTenant.without_tenant do
+      # Tenant checking is disabled for all code in this block
     @user = User.create(sign_up_params)
     @account = Account.find_by name: params[:account]
     @role = params[:role]
     @role === "Motorista" ? (@user.role = false) : (@user.role = true)
-    #@user.account_id = @account.id
+    @user.account_id = @account.id
     respond_to do |format|
       if @user.save
         format.html { redirect_to root_path, notice: "Usuário #{@user.email} Criado com sucesso" }
@@ -57,6 +59,7 @@ class RegistrationsController < ApplicationController
         #render :status => 400,
               #:json => {:message => @user.errors.full_messages}
       end
+    end
     end
   end
 
@@ -79,7 +82,7 @@ class RegistrationsController < ApplicationController
   private
 
   def sign_up_params
-    params.permit(:email, :username, :password, :role)
+    params.permit(:email, :username, :password, :role, :account_id)
   end
 
   def set_user

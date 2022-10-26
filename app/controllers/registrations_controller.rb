@@ -42,7 +42,7 @@ class RegistrationsController < ApplicationController
     @account = Account.find_by name: params[:account]
     @role = params[:role]
     @role === "Motorista" ? (@user.role = false) : (@user.role = true)
-    @user.account_id = @account.id
+    #@user.account_id = @account.id
     respond_to do |format|
       if @user.save
         format.html { redirect_to root_path, notice: "Usuário #{@user.email} Criado com sucesso" }

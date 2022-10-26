@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   end
 
   resources :days do
+
   end
+
+  get "teste", to: "days#teste"
 
   resources :users do
   end

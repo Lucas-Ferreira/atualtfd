@@ -1,19 +1,18 @@
 <%= render "shared/flashes" %>
 <%= render "shared/navbar2" %>
 
-<div class="container mt-5">
+<div class="container mt-5 text-center">
   <p style="color: green"><%= notice %></p>
 
   <%= render @account %>
 
   <div>
-    <%= link_to "Edit this account", edit_account_path(@account) %> |
-    <%= link_to "Back to accounts", accounts_path %>
-
-    <%= button_to "Destroy this account", @account, method: :delete %>
+    <%= link_to "Editar", edit_account_path(@account), class: "btn btn-warning btn-sm" %>
+    <%#= link_to "Back to accounts", accounts_path %>
+    <%= link_to "Deletar", @account, method: :delete, class: "btn btn-danger btn-sm" %>
   </div>
   <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
+    <div class="col-12 col-md-6 offset-lg-3 mt-3">
       <div class="d-flex justify-content-center bg-white rounded p-5 shadow">
         <%= form_with url: admin_account_path, class:"row g-1 w-10", method: :post do |form| %>
           <div><%= form.label :email %></div>

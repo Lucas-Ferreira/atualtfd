@@ -37,6 +37,10 @@
         <%= form.select :status,["A iniciar", "Finalizado"], class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :vehicle, "Veículo" %></div>
         <%= form.collection_select :vehicle, Vehicle.all, :id, :modelo, prompt: true, class:"form-control mb-3" %>
+        <div><%= form.label :hr_partida, "Horário de Partida" %></div>
+        <%= form.text_field :hr_partida, class:"form-control form-control-sm col-auto" %>
+        <div><%= form.label :hr_volta, "Horário de Retorno" %></div>
+        <%= form.text_field :hr_volta, class:"form-control form-control-sm col-auto" %>
         </div>
       </div>
       <div class="modal-footer">
@@ -70,6 +74,8 @@
       <div class="accordion-body"> <strong> Placa: </strong><%= show.placa %> </div>
       <div class="accordion-body"> <strong> Capacidade: <%= show.capacidade %> </strong> </div>
       <% end %>
+      <div class="accordion-body"> <strong> Horário de Partida: </strong><%= r.hr_partida %> </div>
+       <div class="accordion-body"> <strong> Horário de Retorno: </strong><%= r.hr_volta %> </div>
       <div><%= link_to "Detalhes", travel_path(r), class: "m-4 btn btn-primary btn-sm" %></div>
     </div>
   </div>

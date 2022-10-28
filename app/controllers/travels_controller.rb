@@ -31,7 +31,7 @@ class TravelsController < ApplicationController
   private
 
   def travel_params
-    params.permit(:status, :route_id, :vehicle)
+    params.require(:travel).permit(:status, :route_id, :hr_partida, :hr_volta)
   end
 
   def set_travel

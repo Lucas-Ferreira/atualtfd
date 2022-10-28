@@ -4,5 +4,5 @@ class Travel < ApplicationRecord
   has_many :vehicles, through: :travel_vehicles
   has_many :confirmations, dependent: :destroy
   has_many :patients, through: :confirmations
-  acts_as_tenant(:account)
+  acts_as_tenant(:account)  
 end

@@ -32,7 +32,7 @@ class RoutesController < ApplicationController
   private
 
   def rotum_params
-    params.permit(:origem, :destino, :vehicle, :capacidade, :especialidade, :account_id)
+    params.require(:route).permit(:origem, :destino, :vehicle, :capacidade, :especialidade, :account_id)
   end
 
   def set_rotum

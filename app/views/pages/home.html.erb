@@ -149,11 +149,18 @@
   </div>
 </div>
 <script>
-document.getElementById("teste").addEventListener("click", display);
-function display() {
-  fetch('/teste')
-  .then((response) => response.json())
-  .then((data) => console.log(data.errors));
+//document.getElementById("teste").addEventListener("click", display);
+//function display() {
+//  fetch('/teste')
+ // .then((response) => response.json())
+ // .then((data) => console.log(data.errors));
 
+//}
+
+config = {
+   enableTime: true,
+  dateFormat: "Y-m-d H:i",
 }
+flatpickr("#teste2", config );
+
 </script>

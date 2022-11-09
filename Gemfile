@@ -29,8 +29,7 @@ gem 'turbolinks-source', '~> 5.2'
 gem 'turbolinks', '~> 5.2', '>= 5.2.1'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
-
+gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -83,3 +82,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+#gem "importmap-rails", "~> 1.1"
+
+#gem "importmap-rails", "~> 1.1"

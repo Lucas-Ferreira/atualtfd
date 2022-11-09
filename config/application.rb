@@ -8,8 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Tfdv2
   class Application < Rails::Application
-    config.assets.initialize_on_precompile = false
     config.generators do |generate|
+      config.assets.initialize_on_precompile = false
       generate.assets false
       generate.helper false
       generate.test_framework :test_unit, fixture: false
@@ -28,5 +28,5 @@ module Tfdv2
 
 
   end
-
+   #
 end

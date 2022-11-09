@@ -1,10 +1,35 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  #set_current_tenant_through_filter
+  #before_action :find_current_tenant
+  #before_action :filter_tenant
   set_current_tenant_by_subdomain(:account, :subdomain)
-  #before_action do
-  #  binding.irb
-  #end
+
+#before_action do
+ # binding.irb
+#end
+
+#def find_current_tenant
+  # set to Account.first for now, you'll change this later
+ # if current_user.present?
+  #  current_account = Account.find(current_user.account_id)
+  #  set_current_tenant(current_account)
+ # end
+#end
+
+ # Filter Tenant
+ #@teste = false
+#def filter_tenant
+ # if ActsAsTenant.current_tenant.nil?
+ #   p ">>>>>>>>>>>>>>> http://admin.lvh.me:3000"
+ # end
+#end
+
+
+ # Devise Configuration
+
   before_action :configure_permitted_parameters, if: :devise_controller?
+
 
   # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized

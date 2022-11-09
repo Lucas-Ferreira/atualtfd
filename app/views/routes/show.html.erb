@@ -14,7 +14,7 @@
       <p class="card-text mt-5">
 
 
-      <!-- Modal Add Rotum -->
+<!-- Modal Add Rotum -->
 
 <!-- Button trigger modal -->
 
@@ -25,7 +25,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" >
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="z-index: 100">>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -36,7 +36,9 @@
         <div><%= form.label :status, "Status" %></div>
         <%= form.select :status,["A iniciar", "Finalizado"], class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :vehicle, "Veículo" %></div>
-        <%= form.collection_select :vehicle, Vehicle.all, :id, :modelo, prompt: true, class:"form-control mb-3" %>
+        <%= form.collection_select :vehicle, Vehicle.all, :id, :modelo, prompt: true, class:"form-control form-control-sm col-auto" %>
+         <div><%= form.label :hr_final, "Data" %></div>
+         <%= form.date_select :hr_final, class:"form-control form-control-sm col-auto"%>
         <div><%= form.label :hr_partida, "Horário de Partida" %></div>
         <%= form.text_field :hr_partida, class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :hr_volta, "Horário de Retorno" %></div>
@@ -53,50 +55,131 @@
   </div>
 </div>
 
-  <!-- End Modal Add Rotum -->
+</div>
 
-  <!-- Init Accordion Rotum -->
-<% @count = 1 %>
-<% @rotum_run.each do |r|  %>
-<div class="accordion accordion-flush mt-3" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingOne">
-    <% @ind = "#flush-collapseOne" + "#{@count}" %>
-    <% @ind2 = "flush-collapseOne" + "#{@count}" %>
-      <button class="d-flex justify-content-between accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target= <%= @ind %> aria-expanded="false" aria-controls="flush-collapseOne">
-        Viagem <%= r.id %>
-        <div class="m-2 btn btn-warning btn-sm"><%= r.status %></div>
-      </button>
-    </h2>
-    <div id=<%= @ind2 %> class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <% r.vehicles.each do |show| %>
-      <div class="accordion-body"> <strong> Modelo: </strong><%= show.modelo %> </div>
-      <div class="accordion-body"> <strong> Placa: </strong><%= show.placa %> </div>
-      <div class="accordion-body"> <strong> Capacidade: <%= show.capacidade %> </strong> </div>
-      <% end %>
-      <div class="accordion-body"> <strong> Horário de Partida: </strong><%= r.hr_partida %> </div>
-       <div class="accordion-body"> <strong> Horário de Retorno: </strong><%= r.hr_volta %> </div>
-      <div><%= link_to "Detalhes", travel_path(r), class: "m-4 btn btn-primary btn-sm" %></div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Novembro</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Dezembro</button>
+  </li>
+</ul>
+<div class="tab-content p-3" id="myTabContent">
+  <div class="tab-pane fade show active mt-3" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+  <!-- Tab - NOVEMBRO -->
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Viagem</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Histórico</button>
+              </li>
+            </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+
+              <!-- Viagem Novembro -->
+
+              <% @nov = @rotum.travels.where(month:11, status:"A iniciar") %>
+              <% @count = 1 %>
+              <% @nov.each do |r|  %>
+              <% @ind = "#flush-collapseOne" + "#{@count}" %>
+              <% @ind2 = "flush-collapseOne" + "#{@count}" %>
+              <!-- Accordion INICÍO - NOVEMBRO -->
+            <div class="accordion" id="accordionExample">
+              <div class="card shadow-lg">
+                <div class="card-header" id="headingThree">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target=<%= @ind %> aria-expanded="false" aria-controls="collapseThree">
+                     <%= r.id %>
+                     <div class="m-2 btn btn-warning btn-sm"><%= r.status %></div>
+                     <div class="m-2 btn btn-success btn-sm"><%= r.hr_final %> </div>
+                    </button>
+                  </h2>
+                </div>
+                <div id=<%= @ind2 %> class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <div>Partida: <strong><%= r.hr_partida %></strong></div>
+                    <div>Retorno: <strong><%= r.hr_volta %></strong></div>
+                    <div>Data: <strong><%= r.hr_final %></strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% @count = @count + 1 %>
+            <% end %>
+
+              <!-- Accordion FIM - NOVEMBRO -->
+
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+
+            <!-- Historico Novembro -->
+
+             <% @nov = @rotum.travels.where(month:11, status:"A iniciar") %>
+              <% @count = 1 %>
+              <% @rotum.travels.where(month:11, status:"Finalizado").each do |r|  %>
+              <% @ind = "#flush-collapseTwo" + "#{@count}" %>
+              <% @ind2 = "flush-collapseTwo" + "#{@count}" %>
+
+              <!-- Accordion INICÍO - DEZEMBRO -->
+            <div class="accordion" id="accordionExample">
+              <div class="card shadow-lg">
+                <div class="card-header" id="headingThree">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target=<%= @ind %> aria-expanded="false" aria-controls="collapseThree">
+                     <%= r.id %>
+                     <div class="m-2 btn btn-warning btn-sm"><%= r.status %></div>
+                     <div class="m-2 btn btn-success btn-sm"><%= r.hr_final %> </div>
+                    </button>
+                  </h2>
+                </div>
+                <div id=<%= @ind2 %> class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <div>Partida: <strong><%= r.hr_partida %></strong></div>
+                    <div>Retorno: <strong><%= r.hr_volta %></strong></div>
+                    <div>Data: <strong><%= r.hr_final %></strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% @count = @count + 1 %>
+            <% end %>
+
+              <!-- Accordion FIM - DEZEMBRO -->
+
+
+            </div>
+          </div>
+
+  </div>
+  <div class="tab-pane fade mt-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+<!-- DEZEMBRO -->
+  </div>
+  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+</div>
+<div class="progress" style="height: 3px;">
+  <div
+    class="progress-bar"
+    role="progressbar"
+    style="width: 100%;"
+    aria-valuenow="25"
+    aria-valuemin="0"
+    aria-valuemax="100">
     </div>
   </div>
 </div>
-</p>
-<% @count = @count + 1 %>
-<% end %>
-</div>
 
 
-<!-- End Accordion Rotum -->
+<script>
+config = {
+   enableTime: true,
+  dateFormat: "Y-m-d H:i",
+}
+flatpickr("#teste", config );
 
-    <div class="progress" style="height: 3px;">
-      <div
-        class="progress-bar"
-        role="progressbar"
-        style="width: 100%;"
-        aria-valuenow="25"
-        aria-valuemin="0"
-        aria-valuemax="100"
-      ></div>
-    </div>
-  </div>
-</div>
+
+
+</script>

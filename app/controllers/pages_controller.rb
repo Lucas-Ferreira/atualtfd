@@ -6,5 +6,6 @@ class PagesController < ApplicationController
     @vehicles = Vehicle.all
     @vliberado = Vehicle.where(status:"Liberado")
     @vmanutencao = Vehicle.where(status:"Manutencão")
+    #binding.irb
   end
 end

@@ -67,7 +67,7 @@
               <i class="align-middle" data-feather="list"></i> <span class="align-middle">Listagem</span>
             </a>
 					</li>
-          <%# if current_user.role === true && ActsAsTenant.current_tenant.name === "admin" %>
+          <% if current_user.role === true && ActsAsTenant.current_tenant.name === "admin" %>
           <ul class="sidebar-nav">
 					<li class="sidebar-header">
 						Município
@@ -85,7 +85,7 @@
             </a>
 					</li>
 				</ul>
-        <%# end %>
+        <% end %>
 			</div>
 		</nav>
 

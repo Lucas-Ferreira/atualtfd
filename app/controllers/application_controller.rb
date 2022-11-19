@@ -5,6 +5,15 @@ class ApplicationController < ActionController::Base
   #before_action :filter_tenant
   set_current_tenant_by_subdomain(:account, :subdomain)
 
+  #def after_sign_in_path_for(resource)
+   # if current_user.role == false
+   #   motorista_path
+    #else
+    #  root_path
+   # end
+
+  #end
+
 #before_action do
  # binding.irb
 #end

@@ -17,9 +17,12 @@ class VehiclesController < ApplicationController
   end
 
   def create
+
     @vehicle = Vehicle.new(vehicle_params)
+    @motorista = User.find_by_email(params[:vehicle][:user_id])
+
     #@vehicle.user_id = 1
-    @vehicle.user_id = current_user.id
+    @vehicle.user_id = @motorista.id
     if @vehicle.save!
       redirect_to vehicles_path, notice: "Criado com sucesso"
     else

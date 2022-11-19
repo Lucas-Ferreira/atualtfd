@@ -1,23 +1,21 @@
 
+<%= render "shared/navbar" %>
 
-<%= render "shared/flashes" %>
-<%= render "shared/navbar2" %>
-
-<div class="container mt-3 p-3">
-<div class="card shadow rounded-3 " style="--bs-border-opacity: .2;">
+<div class="container">
+ <div class="row mt-5">
+    <div class="card shadow rounded-3 " style="--bs-border-opacity: .2;">
     <div class="card-body callout callout-primary">
-      <h5 class="card-title mt-3"><h2>Olá, Boa tarde</h2></h5>
-      <p class="card-text mt-5">
-        <%= link_to "Cadastrar Veículo", new_vehicle_path, class:"btn btn-success" %>
-        <%= link_to "Criar usuário", new_sign_up_path, class:"btn btn-success" %>
-        <%= link_to "Criar Rota", new_route_path, class:"btn btn-success" %>
-      </p>
+      <h5 class="card-title mt-3"><h2>Olá, Motorista.</h2>
+        <div class="mt-5">Você possui X viagens para realizar</div>
+      </h5>
     </div>
     <div class="progress" style="height: 3px;">
   <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
   </div>
-  <div class="container-fluid p-0">
+ </div>
+
+ <div class="container-fluid p-0">
 					<h1 class="h3 mb-3"><strong>TFD</strong> Dashboard</h1>
 					<div class="row">
 						<div class="col-xl-12 col-xxl-12 d-flex">
@@ -28,7 +26,7 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Veículos Cadastrados</h5>
+														<h5 class="card-title">Veículos Atribuídos</h5>
 													</div>
 													<div class="col-auto">
 														<div class="stat text-primary">
@@ -36,7 +34,7 @@
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3"><%= Vehicle.all.count %></h1>
+												<h1 class="mt-1 mb-3"><%= current_user.vehicles.count %></h1>
 												<div class="mb-0">
 													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i></span>
 													<span class="text-muted"></span>
@@ -56,7 +54,7 @@
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3"><%= @vliberado.count %></h1>
+												<h1 class="mt-1 mb-3"><%= current_user.vehicles.where(status:"Liberado").count %></h1>
 												<div class="mb-0">
 													<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i></span>
 													<span class="text-muted"></span>
@@ -78,7 +76,7 @@
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3"><%= @vmanutencao.count %></h1>
+												<h1 class="mt-1 mb-3"><%= current_user.vehicles.where.not(status:"Liberado").count %></h1>
 												<div class="mb-0">
 													<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i></span>
 													<span class="text-muted"></span>
@@ -98,7 +96,7 @@
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3"><%= Travel.where(status:"Finalizado").count %></h1>
+												<h1 class="mt-1 mb-3"><%= current_user.travels.where.not(status: "A iniciar").count %></h1>
 												<div class="mb-0">
 													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i>  </span>
 													<span class="text-muted"></span>
@@ -111,57 +109,8 @@
 						</div>
 					</div>
 
-<div class="row">
-						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
-							<div class="card flex-fill">
-								<div class="card-header">
 
-									<h5 class="card-title mb-0">Veículos Cadastrados</h5>
-								</div>
-								<table class="table table-hover my-0">
-									<thead>
-										<tr>
-											<th>Modelo</th>
-											<th class="d-none d-xl-table-cell">Placa</th>
-											<th class="d-none d-xl-table-cell">Ano</th>
-											<th>Status</th>
-											<th class="d-none d-md-table-cell">Capacidade</th>
-                      <th class="d-none d-md-table-cell"></th>
-										</tr>
-									</thead>
-									<tbody>
-                    <% @vehicles.each do |v| %>
-										<tr>
-											<td> <%= v.modelo %></td>
-											<td class="d-none d-xl-table-cell"><%= v.placa %></td>
-											<td class="d-none d-xl-table-cell"><%= v.ano %></td>
-											<td><span class="badge <%= v.status == "Liberado" ? "bg-success" : "bg-danger"%>"><%= v.status %></span></td>
-											<td class="d-none d-md-table-cell"><%= v.capacidade %></td>
-                      <td class="d-none d-md-table-cell">
-                      <%= link_to "Deletar", vehicle_path(v), data: { method: :delete, confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
-                      <%= link_to "Editar", edit_vehicle_path(v), class: "btn btn-warning btn-sm" %>
-                      </td>
-										</tr>
-                    <% end %>
-									</tbody>
-								</table>
-							</div>
-						</div>
-  </div>
+
+
+
 </div>
-<script>
-//document.getElementById("teste").addEventListener("click", display);
-//function display() {
-//  fetch('/teste')
- // .then((response) => response.json())
- // .then((data) => console.log(data.errors));
-
-//}
-
-config = {
-   enableTime: true,
-  dateFormat: "Y-m-d H:i",
-}
-flatpickr("#teste2", config );
-
-</script>

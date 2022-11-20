@@ -4,7 +4,7 @@
 				<a class="sidebar-brand" href="index.html">
           <span class="align-middle">TFD</span>
         </a>
-        <div class="text-center mt-3 mb-5">
+        <div class="text-center mt-3">
         <img class="avatar-large" alt="avatar-large" src="https://media-exp1.licdn.com/dms/image/C5603AQHozV5-9hM8fw/profile-displayphoto-shrink_800_800/0/1604489859378?e=2147483647&v=beta&t=a1yJW6kaNKYDJwEc40ITYamAdQqn-uhbZ_xSJ0DXtzc" />
         </div>
         <ul class="sidebar-nav">
@@ -17,56 +17,15 @@
                <span class="align-middle">Dashboard</span>
             </a>
 					</li>
+          <li class="sidebar-item">
+              <a class="sidebar-link" href="/travels">
+                <i class="align-middle" data-feather="list"></i> <span class="align-middle">Viagens</span>
+              </a>
+            </li>
         </ul>
 
-				<ul class="sidebar-nav">
-            <li class="sidebar-header">
-              Usuários
-            </li>
 
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="/new_sign_up">
-                <i class="align-middle" data-feather="users"></i> <span class="align-middle">Cadastro</span>
-              </a>
-            </li>
 
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="/users">
-                <i class="align-middle" data-feather="list"></i> <span class="align-middle">Listagem</span>
-              </a>
-            </li>
-
-					<li class="sidebar-header">
-						Veículos
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="/vehicles/new">
-              <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Cadastro</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="/vehicles">
-              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Listagem</span>
-            </a>
-					</li>
-
-					<li class="sidebar-header">
-						Rotas
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="/routes/new">
-              <i class="align-middle" data-feather="map-pin"></i> <span class="align-middle">Cadastro</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="/routes">
-              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Listagem</span>
-            </a>
-					</li>
           <% if current_user.role === true && ActsAsTenant.current_tenant.name === "admin" %>
           <ul class="sidebar-nav">
 					<li class="sidebar-header">

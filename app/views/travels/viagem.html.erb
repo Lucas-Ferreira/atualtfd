@@ -1,0 +1,27 @@
+<%= render "shared/navbar" %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+        <% @travel.each do |r| %>
+          <div class="card-product mt-5">
+              <%= image_tag 'map.png',
+              style: 'width: 10rem;
+              height: auto;'
+              %>
+            <div class="card-product-infos mt-4 mb-4">
+              <div class="row">
+                <div class="col-md-12">
+                <p>Partida:</p>
+                <h2><%= r.hr_partida %></h2>
+                </div>
+              </div>
+              <p>Retorno:</p>
+              <h2><%= r.hr_volta %></h2>
+              <p>Data:<strong> <%= r.hr_final %></strong></p>
+              <%= link_to "Visualizar", travel_path(r), class: "btn btn-success btn-sm m-2" %>
+            </div>
+          </div>
+       <% end %>
+    </div>
+  </div>
+</div>

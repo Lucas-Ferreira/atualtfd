@@ -1,5 +1,5 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:show, :edit, :update, :destroy]
+  before_action :set_travel, only: [:show, :show_to_moto, :edit, :update, :destroy]
 
   def index
   end
@@ -10,7 +10,9 @@ class TravelsController < ApplicationController
   def show
     @patients = @travel.patients
     @patient = Patient.new
+    @travels = current_user.travels
   end
+
 
   def create
     @date = params[:travel]["hr_final(1i)"] + "-" + params[:travel]["hr_final(2i)"] + "-" +  params[:travel]["hr_final(3i)"]
@@ -29,6 +31,10 @@ class TravelsController < ApplicationController
     else
       flash[:alert] = "Erro"
     end
+  end
+
+  def viagem
+    @travel = current_user.travels
   end
 
   private

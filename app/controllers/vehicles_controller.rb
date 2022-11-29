@@ -32,9 +32,14 @@ class VehiclesController < ApplicationController
 
   def edit
     @vehicle = Vehicle.find(params[:id])
+    @array = User.where(role: "false")
+    @array_motorista = []
+    @array.each {|n| @array_motorista << n.email}
   end
 
   def update
+    @mot = params[:vehicle][:user_id]
+    params[:vehicle][:user_id] = User.find_by_email(@mot).id
     if @vehicle.update(vehicle_params)
       redirect_to vehicles_path, notice: "Vehicle was sucessfully updated."
     else

@@ -4,6 +4,19 @@ class TravelsController < ApplicationController
   def index
   end
 
+  def edit
+  end
+
+  def update
+    @travel.update(travel_params)
+    @vehicle = Vehicle.find(params[:travel][:vehicle])
+    if TravelVehicle.where(travel_id: @travel.id)
+      TravelVehicle.where(travel_id: @travel.id).destroy_all
+    end
+    TravelVehicle.create!(travel:@travel, vehicle:@vehicle)
+    redirect_to route_path(@travel.route.id), notice: "Travel was sucessfully updated."
+  end
+
   def new
   end
 
@@ -12,7 +25,6 @@ class TravelsController < ApplicationController
     @patient = Patient.new
     @travels = current_user.travels
   end
-
 
   def create
     @date = params[:travel]["hr_final(1i)"] + "-" + params[:travel]["hr_final(2i)"] + "-" +  params[:travel]["hr_final(3i)"]
@@ -40,7 +52,7 @@ class TravelsController < ApplicationController
   private
 
   def travel_params
-    params.require(:travel).permit(:status, :route_id, :hr_partida, :hr_volta)
+    params.require(:travel).permit(:status, :route_id, :hr_partida, :hr_volta, :hr_final)
   end
 
   def set_travel

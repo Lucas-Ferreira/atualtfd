@@ -15,6 +15,8 @@
         <%= form.select :status,["Liberado", "Em Manutencão", "Defeito"], class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :montadora %></div>
         <%= form.select :montadora,["Pegeout", "Marcopolo", "Fiat", "GM", "Citroen", "Volkswagen"], class:"form-control mb-3" %>
+        <div><%= form.label :user_id %></div>
+        <%= form.select :user_id, @array_motorista, class:"form-control form-control-sm col-auto" %>
         <div><%= form.submit "Adicionar", class: "btn btn-primary mt-2 text-center" %></div>
       <% end %>
       </div>

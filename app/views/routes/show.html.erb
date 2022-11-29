@@ -80,7 +80,6 @@
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 
               <!-- Viagem Novembro -->
-
               <% @nov = @rotum.travels.where(month:11, status:"A iniciar") %>
               <% @count = 1 %>
               <% @nov.each do |r|  %>
@@ -104,9 +103,20 @@
                     <div>Partida: <strong><%= r.hr_partida %></strong></div>
                     <div>Retorno: <strong><%= r.hr_volta %></strong></div>
                     <div>Data: <strong><%= r.hr_final %></strong></div>
-                    <div>Veículo: <strong><%= @vehicle[0][:modelo].capitalize  %></strong></div>
-                    <div>Placa: <strong><%= @vehicle[0][:placa]  %></strong></div>
-                    <div><%= link_to "Detalhes", travel_path(r), class: "mt-3 btn btn-primary btn-sm" %></div>
+                      <% if !@vehicle[0].present? %>
+                        <div>Veículo: <strong>0</strong></div>
+                      <% else %>
+                        <div>Veículo: <strong><%= @vehicle[0][:modelo] %></strong></div>
+                      <% end %>
+                      <% if !@vehicle[0].present? %>
+                        <div>Placa: <strong>Veículo sem placa</strong></div>
+                      <% else %>
+                        <div>Placa: <strong><%= @vehicle[0][:placa]  %></strong></div>
+                      <% end %>
+                    <div>
+                    <%= link_to "Detalhes", travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    <%= link_to "Editar", edit_travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    </div>
                   </div>
                 </div>
               </div>

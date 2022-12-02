@@ -131,12 +131,11 @@
 
             <!-- Historico Novembro -->
 
-             <% @dez = @rotum.travels.where(month:12, status:"A iniciar") %>
+              <% @dez = @rotum.travels.where(month:12, status:"A iniciar") %>
               <% @count = 1 %>
               <% @rotum.travels.where(month:12, status:"Finalizado").each do |r|  %>
               <% @ind = "#flush-collapseTwo" + "#{@count}" %>
               <% @ind2 = "flush-collapseTwo" + "#{@count}" %>
-
               <!-- Accordion INICÍO - DEZEMBRO -->
             <div class="accordion" id="accordionExample">
               <div class="card shadow-lg">
@@ -183,7 +182,9 @@
   <div class="tab-pane fade show active" id="pills-viagem" role="tabpanel" aria-labelledby="pills-viagem-tab">
 
   <!-- Viagem Dezembro -->
+
               <% @dez = @rotum.travels.where(month:12, status:"A iniciar") %>
+              <% if !@dez.empty? %>
               <% @count = @dez[0][:id] %>
               <% @dez.each do |r|  %>
               <% @ind = "#flush-collapseOne" + "#{@count}" %>
@@ -224,8 +225,11 @@
                 </div>
               </div>
   </div>
-<% @count = @count + 1 %>
-<% end %>
+      <% @count = @count + 1 %>
+      <% end %>
+      <% else %>
+    <p>Não há viagem marcada.</p>
+  <% end %>
 
 
   </div>
@@ -234,6 +238,7 @@
 
   <!-- Viagem Dezembro -->
               <% @dez = @rotum.travels.where(month:12, status:"Finalizado") %>
+              <% if !@dez.empty? %>
               <% @count = @dez[0][:id] %>
               <% @dez.each do |r|  %>
               <% @ind = "#flush-collapseOne" + "#{@count}" %>
@@ -274,9 +279,11 @@
                 </div>
               </div>
   </div>
-<% @count = @count + 1 %>
-<% end %>
-
+    <% @count = @count + 1 %>
+    <% end %>
+   <% else %>
+    <p>Não há viagem marcada.</p>
+  <% end %>
 
   </div>
 </div>

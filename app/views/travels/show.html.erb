@@ -40,14 +40,32 @@
                       <td class="text-center"><%= u.acompanhante%></td>
                       <td class="text-center"><%= u.destino%></td>
                       <td class="text-center">
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
-                      <span class="fa-sharp fa-solid fa-circle-check"></span>
-                      </button></td>
+                        <% if u.partida == false || u.partida == nil %>
+                          <%= link_to change_travel_path(u, travel_id: @travel.id, status: false),data: {confirm: "Tem certeza?"}, class: "btn btn-primary btn-sm" do %>
+                          <i class="fa fa-square"></i>
+                        <% end %>
+                      <% else %>
+                        <%#= link_to "D", change_travel_path(u, travel_id: @travel.id, status: false), class: "btn-wide btn btn-success btn-sm" %>
+                        <%= link_to change_travel_path(u, travel_id: @travel.id, status: true), data: {confirm: "Tem certeza?"}, class: "btn btn-success btn-sm" do %>
+                          <i class="fa fa-check"></i>
+                        <% end %>
+                      <% end %>
+                      </td>
                       <td class="text-center">
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
-                        <span class="fa-sharp fa-solid fa-circle-check"></span>
-                      </button></td>
+                        <% if u.retorno == false || u.retorno == nil %>
+                          <%= link_to changeret_travel_path(u, travel_id: @travel.id, status: false),data: {confirm: "Tem certeza?"}, class: "btn btn-primary btn-sm" do %>
+                          <i class="fa fa-square"></i>
+                        <% end %>
+                      <% else %>
+                        <%#= link_to "D", change_travel_path(u, travel_id: @travel.id, status: false), class: "btn-wide btn btn-success btn-sm" %>
+                        <%= link_to changeret_travel_path(u, travel_id: @travel.id, status: true), data: {confirm: "Tem certeza?"}, class: "btn btn-success btn-sm" do %>
+                          <i class="fa fa-check"></i>
+                        <% end %>
+                      <% end %>
+                      </td>
                     </div>
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -174,3 +192,8 @@
 </div>
 </div>
 <% end %>
+<h1 id="bosta"></h1>
+<script>
+const name = document.getElementById("teste");
+console.log(name);
+</script>

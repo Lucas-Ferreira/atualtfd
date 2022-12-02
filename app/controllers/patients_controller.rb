@@ -1,4 +1,9 @@
 class PatientsController < ApplicationController
+
+  def change
+    raise
+  end
+
   def create
     #raise
     @travel = Travel.find(params[:travel_id])

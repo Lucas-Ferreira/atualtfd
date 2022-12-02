@@ -49,6 +49,40 @@ class TravelsController < ApplicationController
     @travel = current_user.travels
   end
 
+  def change
+    @patient = Patient.find(params[:id])
+    @travel = Travel.find(params[:travel_id])
+    if params[:status] == "false"
+      #raise
+      @patient.partida = "true"
+      #raise
+      @patient.save!
+    else
+      #raise
+      @patient.partida = "false"
+      #raise
+      @patient.save!
+    end
+    redirect_to travel_path(@travel)
+  end
+
+  def changeret
+    @patient = Patient.find(params[:id])
+    @travel = Travel.find(params[:travel_id])
+    if params[:status] == "false"
+      #raise
+      @patient.retorno = "true"
+      #raise
+      @patient.save!
+    else
+      #raise
+      @patient.retorno = "false"
+      #raise
+      @patient.save!
+    end
+    redirect_to travel_path(@travel)
+  end
+
   private
 
   def travel_params

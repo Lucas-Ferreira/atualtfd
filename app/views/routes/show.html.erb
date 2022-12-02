@@ -131,9 +131,9 @@
 
             <!-- Historico Novembro -->
 
-             <% @nov = @rotum.travels.where(month:11, status:"A iniciar") %>
+             <% @dez = @rotum.travels.where(month:12, status:"A iniciar") %>
               <% @count = 1 %>
-              <% @rotum.travels.where(month:11, status:"Finalizado").each do |r|  %>
+              <% @rotum.travels.where(month:12, status:"Finalizado").each do |r|  %>
               <% @ind = "#flush-collapseTwo" + "#{@count}" %>
               <% @ind2 = "flush-collapseTwo" + "#{@count}" %>
 
@@ -154,7 +154,6 @@
                     <div>Partida: <strong><%= r.hr_partida %></strong></div>
                     <div>Retorno: <strong><%= r.hr_volta %></strong></div>
                     <div>Data: <strong><%= r.hr_final %></strong></div>
-
                   </div>
                 </div>
               </div>
@@ -170,10 +169,120 @@
 
   </div>
   <div class="tab-pane fade mt-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-<!-- DEZEMBRO -->
+
+  <!-- INIT DEZEMBRO INSIDE TABS -->
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-viagem-tab" data-bs-toggle="pill" data-bs-target="#pills-viagem" type="button" role="tab" aria-controls="pills-viagem" aria-selected="true">Viagem</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-historico-tab" data-bs-toggle="pill" data-bs-target="#pills-historico" type="button" role="tab" aria-controls="pills-historico" aria-selected="false">Histórico</button>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-viagem" role="tabpanel" aria-labelledby="pills-viagem-tab">
+
+  <!-- Viagem Dezembro -->
+              <% @dez = @rotum.travels.where(month:12, status:"A iniciar") %>
+              <% @count = @dez[0][:id] %>
+              <% @dez.each do |r|  %>
+              <% @ind = "#flush-collapseOne" + "#{@count}" %>
+              <% @ind2 = "flush-collapseOne" + "#{@count}" %>
+              <% @vehicle = r.vehicles %>
+              <!-- Accordion INICÍO - DEZEMBRO -->
+            <div class="accordion" id="accordionExample2">
+              <div class="card shadow-lg">
+                <div class="card-header" id="headingThree2">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target=<%= @ind %> aria-expanded="false" aria-controls="collapseThree">
+                     <%= r.id %>
+                     <div class="m-2 btn btn-warning btn-sm"><%= r.status %></div>
+                     <div class="m-2 btn btn-success btn-sm"><%= r.hr_final %> </div>
+                    </button>
+                  </h2>
+                </div>
+                <div id=<%= @ind2 %> class="collapse" aria-labelledby="headingThree2" data-parent="#accordionExample2">
+                  <div class="card-body">
+                    <div>Partida: <strong><%= r.hr_partida %></strong></div>
+                    <div>Retorno: <strong><%= r.hr_volta %></strong></div>
+                    <div>Data: <strong><%= r.hr_final %></strong></div>
+                      <% if !@vehicle[0].present? %>
+                        <div>Veículo: <strong>0</strong></div>
+                      <% else %>
+                        <div>Veículo: <strong><%= @vehicle[0][:modelo] %></strong></div>
+                      <% end %>
+                      <% if !@vehicle[0].present? %>
+                        <div>Placa: <strong>Veículo sem placa</strong></div>
+                      <% else %>
+                        <div>Placa: <strong><%= @vehicle[0][:placa]  %></strong></div>
+                      <% end %>
+                    <div>
+                    <%= link_to "Detalhes", travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    <%= link_to "Editar", edit_travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
   </div>
-  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
-  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+<% @count = @count + 1 %>
+<% end %>
+
+
+  </div>
+  <div class="tab-pane fade" id="pills-historico" role="tabpanel" aria-labelledby="pills-historico-tab">
+
+
+  <!-- Viagem Dezembro -->
+              <% @dez = @rotum.travels.where(month:12, status:"Finalizado") %>
+              <% @count = @dez[0][:id] %>
+              <% @dez.each do |r|  %>
+              <% @ind = "#flush-collapseOne" + "#{@count}" %>
+              <% @ind2 = "flush-collapseOne" + "#{@count}" %>
+              <% @vehicle = r.vehicles %>
+              <!-- Accordion INICÍO - DEZEMBRO -->
+            <div class="accordion" id="accordionExample2">
+              <div class="card shadow-lg">
+                <div class="card-header" id="headingThree2">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target=<%= @ind %> aria-expanded="false" aria-controls="collapseThree">
+                     <%= r.id %>
+                     <div class="m-2 btn btn-warning btn-sm"><%= r.status %></div>
+                     <div class="m-2 btn btn-success btn-sm"><%= r.hr_final %> </div>
+                    </button>
+                  </h2>
+                </div>
+                <div id=<%= @ind2 %> class="collapse" aria-labelledby="headingThree2" data-parent="#accordionExample2">
+                  <div class="card-body">
+                    <div>Partida: <strong><%= r.hr_partida %></strong></div>
+                    <div>Retorno: <strong><%= r.hr_volta %></strong></div>
+                    <div>Data: <strong><%= r.hr_final %></strong></div>
+                      <% if !@vehicle[0].present? %>
+                        <div>Veículo: <strong>0</strong></div>
+                      <% else %>
+                        <div>Veículo: <strong><%= @vehicle[0][:modelo] %></strong></div>
+                      <% end %>
+                      <% if !@vehicle[0].present? %>
+                        <div>Placa: <strong>Veículo sem placa</strong></div>
+                      <% else %>
+                        <div>Placa: <strong><%= @vehicle[0][:placa]  %></strong></div>
+                      <% end %>
+                    <div>
+                    <%= link_to "Detalhes", travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    <%= link_to "Editar", edit_travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  </div>
+<% @count = @count + 1 %>
+<% end %>
+
+
+  </div>
+</div>
+<!-- END DEZEMBRO INSIDE TABS -->
+
+
 </div>
 <div class="progress" style="height: 3px;">
   <div

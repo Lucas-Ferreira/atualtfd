@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "motorista", to: "pages#moto"
   get "travels", to: "travels#viagem"
-
+  #post "patients/:id", to: "patients#change", as: :change_status
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -31,8 +31,12 @@ Rails.application.routes.draw do
   end
 
   resources :travels do
+    member do
+      get "change"
+      get "changeret"
+    end
+    #get "change/:id", to: "travels#change", as: :teste
     resources :patients do
-
     end
   end
 

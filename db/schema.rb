@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_20_004012) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_27_133022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_004012) do
     t.datetime "updated_at", null: false
     t.index ["route_id"], name: "index_days_on_route_id"
     t.index ["travel_id"], name: "index_days_on_travel_id"
+  end
+
+  create_table "empenhos", force: :cascade do |t|
+    t.float "valor"
+    t.string "date"
+    t.string "motorista"
+    t.bigint "user_id", null: false
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+    t.index ["account_id"], name: "index_empenhos_on_account_id"
+    t.index ["user_id"], name: "index_empenhos_on_user_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -75,6 +88,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_004012) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "account_id"
+  end
+
+  create_table "saldos", force: :cascade do |t|
+    t.float "saldo_total"
+    t.float "aporte_total"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_saldos_on_user_id"
   end
 
   create_table "travel_vehicles", force: :cascade do |t|
@@ -132,8 +154,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_004012) do
   add_foreign_key "confirmations", "travels"
   add_foreign_key "days", "routes"
   add_foreign_key "days", "travels"
+  add_foreign_key "empenhos", "accounts"
+  add_foreign_key "empenhos", "users"
   add_foreign_key "route_vehicles", "routes"
   add_foreign_key "route_vehicles", "vehicles"
+  add_foreign_key "saldos", "users"
   add_foreign_key "travel_vehicles", "travels"
   add_foreign_key "travel_vehicles", "vehicles"
   add_foreign_key "travels", "routes"

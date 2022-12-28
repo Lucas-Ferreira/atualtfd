@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :empenhos do
+
+  end
+
   resources :vehicles do
 
   end

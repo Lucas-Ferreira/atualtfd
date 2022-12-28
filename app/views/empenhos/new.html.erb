@@ -1,0 +1,31 @@
+<%= render "shared/flashes" %>
+<%= render "shared/navbar2" %>
+
+<div class="container mt-3 p-3">
+  <h1> Empenhos </h1>
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="d-flex justify-content-center bg-white rounded p-5 shadow">
+      <%= form_with model: @empenho, url: { action: "create" }, class:"row g-1 w-10", local: true do |form| %>
+        <%= form.label :valor %>
+        <%= form.number_field :valor, step: :any , required: true, class:"form-control form-control-sm col-auto" %>
+        <div><%= form.label :motorista %></div>
+        <%= form.select :motorista, @array_motorista, class:"form-control form-control-sm col-auto" %>
+        <div><%= form.label :status %></div>
+        <%= form.select :status, ['Antecipado','Futuro'], class:"form-control form-control-sm col-auto" %>
+        <div><%= form.submit "Adicionar", class: "btn btn-primary mt-2 text-center" %></div>
+      <% end %>
+      </div>
+ <%#= simple_form_for @rotum, class:"row g-1 w-10", validate: true do |f| %>
+          <%#= f.input :origem, label: 'Origem' %>
+          <%#= f.input :destino, label: 'Destino' %>
+          <%#= f.input :especialidade, label: 'Especialidade' %>
+          <%#= f.input :capacidade, label: 'Capacidade' %>
+          <%#= f.submit "Criar",  class: "btn btn-primary" %>
+      <%# end %>
+
+      <div><h3><%#= @rotums.origem %></h3></div>
+      <div><%#= link_to "Show", rotum_path(@rotums.id)  %></div>
+    </div>
+</div>
+</div>

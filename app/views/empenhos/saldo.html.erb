@@ -1,0 +1,42 @@
+<%= render "shared/flashes" %>
+<%= render "shared/navbar2" %>
+
+<div class="container mt-5">
+<div class="row">
+						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">Saldos</h5>
+								</div>
+								<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>id</th>
+											<th class="d-none d-xl-table-cell">Email</th>
+											<th class="d-none d-xl-table-cell">Saldo</th>
+										</tr>
+									</thead>
+									<tbody>
+                    <% @saldos.each do |s| %>
+                    <%# raise %>
+										<tr>
+											<td> <%= s.id %></td>
+											<td class="d-none d-xl-table-cell"><%= s.email %></td>
+                      </td>
+                      <td class="d-none d-xl-table-cell">
+                      <% if s.saldos[0].nil? %>
+                        <p>Sem saldo</p>
+                      <% else %>
+                        R$ <%= s.saldos[0].saldo_total %>
+                      <% end %>
+                      </td>
+                      </td>
+										</tr>
+                    <% end %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+</div>
+</div>

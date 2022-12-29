@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "motorista", to: "pages#moto"
   get "travels", to: "travels#viagem"
+  get "saldos", to: "empenhos#saldo"
+
   #post "patients/:id", to: "patients#change", as: :change_status
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

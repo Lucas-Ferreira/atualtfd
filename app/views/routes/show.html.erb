@@ -57,7 +57,21 @@
 
 </div>
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-pills mb-3 p-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-vintedois-tab" data-bs-toggle="pill" data-bs-target="#pills-vintedois" type="button" role="tab" aria-controls="pills-vintedois" aria-selected="true">2022</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-vintetres-tab" data-bs-toggle="pill" data-bs-target="#pills-vintetres" type="button" role="tab" aria-controls="pills-vintetres" aria-selected="false">2023</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"></button>
+  </li>
+</ul>
+<div class="tab-content p-3" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-vintedois" role="tabpanel" aria-labelledby="pills-vintedois-tab">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Novembro</button>
   </li>
@@ -291,6 +305,87 @@
 
 
 </div>
+</div>
+
+  </div>
+  <div class="tab-pane fade" id="pills-vintetres" role="tabpanel" aria-labelledby="pills-vintetres-tab">
+  <nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-jan23-tab" data-bs-toggle="tab" data-bs-target="#nav-jan23" type="button" role="tab" aria-controls="nav-jan23" aria-selected="true">Janeiro
+    </button>
+    <button class="nav-link" id="nav-fev23-tab" data-bs-toggle="tab" data-bs-target="#nav-fev23" type="button" role="tab" aria-controls="nav-fev23" aria-selected="false">Fevereiro</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"></button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-jan23" role="tabpanel" aria-labelledby="nav-jan23-tab">
+
+    <% @jan = @rotum.travels.where(month:1, status:"A iniciar") %>
+    <%# raise %>
+              <% if !@jan.empty? %>
+              <% @count = @jan[0][:id] %>
+              <% @jan.each do |r|  %>
+              <% @ind = "#flush-collapseOne" + "#{@count}" %>
+              <% @ind2 = "flush-collapseOne" + "#{@count}" %>
+              <% @vehicle = r.vehicles %>
+              <!-- Accordion INICÍO - DEZEMBRO -->
+            <div class="accordion" id="accordionExample2">
+              <div class="card shadow-lg">
+                <div class="card-header" id="headingThree2">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target=<%= @ind %> aria-expanded="false" aria-controls="collapseThree">
+                     <%= r.id %>
+                     <div class="m-2 btn btn-warning btn-sm"><%= r.status %></div>
+                     <div class="m-2 btn btn-success btn-sm"><%= r.hr_final %> </div>
+                    </button>
+                  </h2>
+                </div>
+                <div id=<%= @ind2 %> class="collapse" aria-labelledby="headingThree2" data-parent="#accordionExample2">
+                  <div class="card-body">
+                    <div>Partida: <strong><%= r.hr_partida %></strong></div>
+                    <div>Retorno: <strong><%= r.hr_volta %></strong></div>
+                    <div>Data: <strong><%= r.hr_final %></strong></div>
+                      <% if !@vehicle[0].present? %>
+                        <div>Veículo: <strong>0</strong></div>
+                      <% else %>
+                        <div>Veículo: <strong><%= @vehicle[0][:modelo] %></strong></div>
+                      <% end %>
+                      <% if !@vehicle[0].present? %>
+                        <div>Placa: <strong>Veículo sem placa</strong></div>
+                      <% else %>
+                        <div>Placa: <strong><%= @vehicle[0][:placa]  %></strong></div>
+                      <% end %>
+                    <div>
+                    <%= link_to "Detalhes", travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    <%= link_to "Editar", edit_travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  </div>
+    <% @count = @count + 1 %>
+    <% end %>
+   <% else %>
+    <p>Não há viagem marcada.</p>
+  <% end %>
+
+  </div>
+
+  <div class="tab-pane fade" id="nav-fev23" role="tabpanel" aria-labelledby="nav-fev23-tab">
+
+  <h3 class="p-5 text-center"> Indisponível </h3>
+
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+</div>
+
+  </div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+</div>
+
+
+
+
 <div class="progress" style="height: 3px;">
   <div
     class="progress-bar"

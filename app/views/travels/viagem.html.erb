@@ -2,26 +2,65 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-12">
-        <% @travel.each do |r| %>
-          <div class="card-product mt-5">
-              <%= image_tag 'map.png',
-              style: 'width: 10rem;
-              height: auto;'
-              %>
-            <div class="card-product-infos mt-4 mb-4">
-              <div class="row">
-                <div class="col-md-12">
-                <p>Origem:</p>
-                <h2><%= r.route.origem %></h2>
+      <div class="card shadow rounded-3 p-3 " style="--bs-border-opacity: .2;">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">A iniciar</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Encerrado</button>
+          </li>
+        </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <% @travel.each do |r| %>
+            <div class="card-product mt-4 mb-4">
+                <%= image_tag 'map.png',
+                style: 'width: 10rem;
+                height: auto;'
+                %>
+              <div class="card-product-infos mt-4 mb-4">
+                <div class="row">
+                  <div class="col-md-12">
+                  <p>id:<%= r.id %></p>
+                  <p>Origem:</p>
+                  <h2><%= r.route.origem %></h2>
+                  </div>
                 </div>
+                <p>Destino:</p>
+                <h2><%= r.route.destino %></h2>
+                <p>Data:<strong> <%= r.hr_final %></strong></p>
+                <%= link_to "Visualizar", travel_path(r), class: "btn btn-success btn-sm m-2" %>
               </div>
-              <p>Destino:</p>
-              <h2><%= r.route.destino %></h2>
-              <p>Data:<strong> <%= r.hr_final %></strong></p>
-              <%= link_to "Visualizar", travel_path(r), class: "btn btn-success btn-sm m-2" %>
             </div>
+            <p></p>
+        <% end %>
+        </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <% @travel_end.each do |r| %>
+            <div class="card-product mt-4 mb-4">
+                <%= image_tag 'map.png',
+                style: 'width: 10rem;
+                height: auto;'
+                %>
+              <div class="card-product-infos mt-4 mb-4">
+                <div class="row">
+                  <div class="col-md-12">
+                  <p>Origem:</p>
+                  <h2><%= r.route.origem %></h2>
+                  </div>
+                </div>
+                <p>Destino:</p>
+                <h2><%= r.route.destino %></h2>
+                <p>Data:<strong> <%= r.hr_final %></strong></p>
+                <%= link_to "Visualizar", travel_path(r), class: "btn btn-success btn-sm m-2" %>
+              </div>
+            </div>
+        <% end %>
           </div>
-       <% end %>
+        </div>
     </div>
-  </div>
+      </div>
+    </div>
 </div>

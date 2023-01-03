@@ -24,11 +24,13 @@ class EmpenhosController < ApplicationController
     if @empenho.save!
       @empenhos = Empenho.where(motorista: @motorista.email)
       @total = 0
-      @empenhos.each do |e|
-        @total = @total + e.valor
-      end
+      @total = @motorista.saldos[0].saldo_total + params[:empenho][:valor]
+      #@empenhos.each do |e|
+      #  @total = @total + e.valor
+      #end
+      raise
       if @motorista.saldos[0].nil?
-        Saldo.create!(saldo_total: @total, aporte_total: @total, user_id: current_user.id)
+        Saldo.create!(saldo_total: @total, aporte_total: @total, user_id: @motorista.id)
       else
         @motorista.saldos[0].update!(saldo_total: @total)
       end

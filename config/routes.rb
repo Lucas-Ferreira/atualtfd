@@ -20,15 +20,15 @@ Rails.application.routes.draw do
   end
 
   resources :empenhos do
-
   end
 
   resources :vehicles do
-
   end
 
   resources :days do
+  end
 
+  resources :comprovantes do
   end
 
   get "teste", to: "days#teste"
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     member do
       get "change"
       get "changeret"
+      get "status"
     end
     #get "change/:id", to: "travels#change", as: :teste
     resources :patients do

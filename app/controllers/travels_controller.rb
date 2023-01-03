@@ -1,5 +1,5 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:show, :show_to_moto, :edit, :update, :destroy]
+  before_action :set_travel, only: [:show, :show_to_moto, :edit, :update, :destroy, :status]
 
   def index
   end
@@ -24,6 +24,7 @@ class TravelsController < ApplicationController
     @patients = @travel.patients
     @patient = Patient.new
     @travels = current_user.travels
+    @comprovante = Comprovante.new
   end
 
   def create
@@ -45,8 +46,14 @@ class TravelsController < ApplicationController
     end
   end
 
+  def status
+    raise
+    redirect_to root_path
+  end
+
   def viagem
-    @travel = current_user.travels
+    @travel = current_user.travels.where(status: "A iniciar")
+    @travel_end = current_user.travels.where(status:"Finalizado")
   end
 
   def change

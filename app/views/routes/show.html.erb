@@ -131,9 +131,9 @@
 
             <!-- Historico Novembro -->
 
-              <% @dez = @rotum.travels.where(month:12, status:"A iniciar") %>
+              <% @dez = @rotum.travels.where(month:11, status:"A iniciar") %>
               <% @count = 1 %>
-              <% @rotum.travels.where(month:12, status:"Finalizado").each do |r|  %>
+              <% @rotum.travels.where(month:11, status:"Finalizado").each do |r|  %>
               <% @ind = "#flush-collapseTwo" + "#{@count}" %>
               <% @ind2 = "flush-collapseTwo" + "#{@count}" %>
               <!-- Accordion INICÍO - DEZEMBRO -->

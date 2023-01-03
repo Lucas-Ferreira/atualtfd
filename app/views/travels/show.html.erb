@@ -159,6 +159,12 @@
       <p><strong> Horários: </strong></p>
       <p>Partida:<strong> <%= @travel.hr_partida %></strong></p>
       <p>Retorno:<strong> <%= @travel.hr_volta %></strong></p>
+      <% if @travel.status == "A iniciar" %>
+        <p class="text-center"><%= link_to "Iniciar", status_travel_path, class:"btn btn-primary" %></p>
+        <p class="text-center"><strong> Em Andamento </strong></p>
+      <% else %>
+        <p class="text-center"><strong> Encerrado </strong></p>
+      <% end %>
         <div class="container table-responsive py-5">
         <table class="table table-bordered table-hover">
           <thead class="thead-dark">
@@ -182,6 +188,23 @@
           <% end %>
           </tbody>
         </table>
+        <% if @travel.status == "Finalizado" %>
+          <div class="progress" style="height: 1px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p class="text-center mt-5"><strong> Comprovantes </strong></p>
+          <div class="d-flex justify-content-center bg-white rounded p-2 shadow">
+          <%= form_with model: @comprovante, class:"row g-1 w-10", local: true do |form| %>
+            <%= form.label :valor %>
+            <%= form.number_field :valor, step: :any , required: true, class:"form-control form-control-sm col-auto" %>
+            <%= form.label :categoria %>
+            <%= form.select :categoria, ['Alimentacão', 'Pedágio', 'Combustível', 'Despesas Diversas'] ,step: :any , required: true, class:"form-control form-control-sm col-auto" %>
+            <%= form.hidden_field :travel, value: @travel.id %>
+            <%= form.submit "Adicionar", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+        <% end %>
         </div>
       </div>
     </div>

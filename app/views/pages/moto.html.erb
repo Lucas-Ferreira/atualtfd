@@ -6,7 +6,13 @@
     <div class="card shadow rounded-3 " style="--bs-border-opacity: .2;">
     <div class="card-body callout callout-primary">
       <h5 class="card-title mt-3"><h2>Olá, Motorista.</h2>
-        <div class="mt-5">Você possui X viagens para realizar</div>
+      <p></p>
+      <% if current_user.saldos[0].nil? %>
+        <div><h3>Saldo total de <strong> R$ 0 </strong></h3></div>
+      <% else %>
+        <div><h3>Saldo total de <strong> R$ <%= current_user.saldos[0].saldo_total %></strong></h3></div>
+      <% end %>
+        <div class="mt-5">Você possui <strong><%= current_user.saldos.count %></strong> viagens para realizar</div>
       </h5>
     </div>
     <div class="progress" style="height: 3px;">

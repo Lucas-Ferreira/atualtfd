@@ -47,8 +47,15 @@ class TravelsController < ApplicationController
   end
 
   def status
-    raise
-    redirect_to root_path
+    @params = params[:params]
+    if @params == "A iniciar"
+      @travel.status = "Em andamento"
+      @travel.save
+    else
+      @travel.status = "Encerrado"
+      @travel.save
+    end
+    redirect_to travel_path(@travel)
   end
 
   def viagem

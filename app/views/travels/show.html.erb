@@ -160,10 +160,12 @@
       <p>Partida:<strong> <%= @travel.hr_partida %></strong></p>
       <p>Retorno:<strong> <%= @travel.hr_volta %></strong></p>
       <% if @travel.status == "A iniciar" %>
-        <p class="text-center"><%= link_to "Iniciar", status_travel_path, class:"btn btn-primary" %></p>
-        <p class="text-center"><strong> Em Andamento </strong></p>
-      <% else %>
-        <p class="text-center"><strong> Encerrado </strong></p>
+        <p class="text-center"><%= link_to "Iniciar", status_travel_path(:params => "A iniciar"), class:"btn btn-primary" %></p>
+      <% elsif @travel.status == "Em andamento"%>
+        <p class="text-center"><%= link_to "Encerrar", status_travel_path(:params => "Encerrar"), class:"btn btn-primary" %></p>
+        <p class="text-center"><strong> Viagem em andamento </strong></p>
+      <% else  %>
+        <p class="text-center"><strong> Viagem Encerrada </strong></p>
       <% end %>
         <div class="container table-responsive py-5">
         <table class="table table-bordered table-hover">

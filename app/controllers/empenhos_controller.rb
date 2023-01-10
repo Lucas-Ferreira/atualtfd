@@ -22,19 +22,20 @@ class EmpenhosController < ApplicationController
     @empenho.date = Time.now
     @empenho.account_id = ActsAsTenant.current_tenant.id
     if @empenho.save!
-      @empenhos = Empenho.where(motorista: @motorista.email)
-      @total = 0
-      @total = @motorista.saldos[0].saldo_total + params[:empenho][:valor]
-      #@empenhos.each do |e|
-      #  @total = @total + e.valor
-      #end
-      raise
       if @motorista.saldos[0].nil?
+        @total = 0 + params[:empenho][:valor].to_f
         Saldo.create!(saldo_total: @total, aporte_total: @total, user_id: @motorista.id)
       else
-        @motorista.saldos[0].update!(saldo_total: @total)
+        @empenhos = Empenho.where(motorista: @motorista.email)
+        @total = 0
+        @aporte_total = 0
+        @total = @motorista.saldos[0].saldo_total + params[:empenho][:valor].to_f
+        @empenhos.each do |e|
+        @aporte_total = @aporte_total + e.valor
+        end
+        @motorista.saldos[0].update!(saldo_total: @total, aporte_total: @aporte_total)
       end
-      redirect_to empenhos_path
+    redirect_to empenhos_path
     end
   end
 

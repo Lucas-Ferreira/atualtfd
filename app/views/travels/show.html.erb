@@ -191,10 +191,9 @@
           </tbody>
         </table>
         <% if @travel.status == "Finalizado" %>
-          <div class="progress" style="height: 1px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress mt-5" style="height: 1.5px;">
           </div>
-          <p class="text-center mt-5"><strong> Comprovantes </strong></p>
+          <p class="text-center mt-5"><strong> Adicionar comprovante </strong></p>
           <div class="d-flex justify-content-center bg-white rounded p-2 shadow">
           <%= form_with model: @comprovante, class:"row g-1 w-10", local: true do |form| %>
             <%= form.label :valor %>
@@ -204,6 +203,19 @@
             <%= form.hidden_field :travel, value: @travel.id %>
             <%= form.submit "Adicionar", class: "btn btn-primary" %>
             </div>
+            <p class="text-center mt-5"><strong> Lista de comprovantes </strong></p>
+              <% current_user.comprovantes.each do |c| %>
+              <div class="list-group p-2">
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Comprovante</h5>
+                    <strong><small> R$ <%= c.valor %></small></strong>
+                  </div>
+                  <p class="mb-1"><%= c.categoria %></p>
+                  <small>And some small print.</small>
+                </a>
+              </div>
+              <% end %>
           <% end %>
         </div>
         <% end %>

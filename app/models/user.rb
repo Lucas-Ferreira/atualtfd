@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_many :travels, through: :travel_vehicles
   belongs_to :account
   has_many :saldos
+  has_many :comprovantes
   acts_as_tenant(:account)
 end

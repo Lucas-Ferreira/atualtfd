@@ -1,10 +1,9 @@
 class ApplicationController < ActionController::Base
+  set_current_tenant_by_subdomain(:account, :subdomain)
   before_action :authenticate_user!
   #set_current_tenant_through_filter
   #before_action :find_current_tenant
   #before_action :filter_tenant
-  set_current_tenant_by_subdomain(:account, :subdomain)
-
   #def after_sign_in_path_for(resource)
    # if current_user.role == false
    #   motorista_path

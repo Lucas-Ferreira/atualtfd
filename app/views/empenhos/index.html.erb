@@ -1,6 +1,5 @@
 <%= render "shared/flashes" %>
 <%= render "shared/navbar2" %>
-
 <div class="container mt-5">
   <div class="card shadow rounded-3 p-3 " style="--bs-border-opacity: .2;">
     <div class="position-relative">
@@ -29,7 +28,7 @@
         </div>
         <% else %>
           <% @empenhos.each do |r| %>
-          <div class="card-product mt-5" style="height: 210px">
+          <div class="card-product mt-5" style="height: 270px">
             <%= image_tag 'money.png',
             style: 'width: 10rem;
             height: auto;'
@@ -41,6 +40,8 @@
               <h2><%= r.motorista %></h2>
               <p>Valor:</p>
               <h2><%= r.valor %></h2>
+              <p>Data:</p>
+              <p><%= r.date %><p>
               <p><strong>Status: </strong><%= r.status %></p>
               <%= link_to "Visualizar", empenho_path(r), class: "btn btn-success btn-sm m-2" %>
               <%= link_to "Editar", edit_empenho_path(r), class: "btn btn-warning btn-sm m-1" %>

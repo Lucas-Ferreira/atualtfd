@@ -190,7 +190,7 @@
           <% end %>
           </tbody>
         </table>
-        <% if @travel.status == "Finalizado" %>
+        <% if @travel.status == "Finalizado" || @travel.status == "Encerrado" %>
           <div class="progress mt-5" style="height: 1.5px;">
           </div>
           <p class="text-center mt-5"><strong> Adicionar comprovante </strong></p>

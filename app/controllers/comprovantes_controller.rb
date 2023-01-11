@@ -15,7 +15,7 @@ def create
         redirect_to travel_path(@travel), notice: "Você não tem saldo para decrementar"
       else
         current_user.saldos[0].update!(saldo_total: current_user.saldos[0].saldo_total - params[:comprovante][:valor].to_f)
-      redirect_to travel_path(@travel), notice: "Comprovante adicionado com sucesso"
+        redirect_to travel_path(@travel), notice: "Comprovante adicionado com sucesso"
       end
     else
     end

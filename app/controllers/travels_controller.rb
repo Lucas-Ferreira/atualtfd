@@ -60,7 +60,7 @@ class TravelsController < ApplicationController
 
   def viagem
     @travel = current_user.travels.where(status: "A iniciar")
-    @travel_end = current_user.travels.where(status:"Finalizado")
+    @travel_end = current_user.travels.where(status:"Finalizado", status: "Encerrado")
   end
 
   def change

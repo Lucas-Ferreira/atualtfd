@@ -4,7 +4,6 @@ class EmpenhosController < ApplicationController
 
   def index
     @empenhos = Empenho.all
-    #@teste = ActsAsTenant.current_tenant
   end
 
   def show
@@ -65,7 +64,7 @@ class EmpenhosController < ApplicationController
   private
 
   def empenho_params
-    params.require(:empenho).permit(:valor, :motorista, :status)
+    params.require(:empenho).permit(:valor, :motorista, :status, :number)
   end
 
   def set_motorista

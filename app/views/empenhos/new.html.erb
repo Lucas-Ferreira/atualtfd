@@ -7,6 +7,8 @@
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="d-flex justify-content-center bg-white rounded p-5 shadow">
       <%= form_with model: @empenho, url: { action: "create" }, class:"row g-1 w-10", local: true do |form| %>
+        <div><%= form.label :number %></div>
+        <%= form.text_field :number, required: true, class:"form-control form-control-sm col-auto" %>
         <%= form.label :valor %>
         <%= form.number_field :valor, step: :any , required: true, class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :motorista %></div>

@@ -3,5 +3,5 @@ class Patient < ApplicationRecord
   has_many :travels, through: :confirmations
   has_many :routes, through: :travels
   validates :name, presence: true
-  acts_as_tenant(:account)
+  #acts_as_tenant(:account)
 end

@@ -4,6 +4,7 @@ class EmpenhosController < ApplicationController
 
   def index
     @empenhos = Empenho.all
+    #@teste = ActsAsTenant.current_tenant
   end
 
   def show

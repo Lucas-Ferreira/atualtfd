@@ -10,6 +10,9 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Encerrado</button>
           </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-andamento-tab" data-bs-toggle="pill" data-bs-target="#pills-andamento" type="button" role="tab" aria-controls="pills-andamento" aria-selected="false">Em andamento</button>
+          </li>
         </ul>
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -58,6 +61,28 @@
             </div>
         <% end %>
           </div>
+            <div class="tab-pane fade" id="pills-andamento" role="tabpanel" aria-labelledby="pills-andamento-tab">
+              <% @travel_running.each do |r| %>
+              <div class="card-product mt-4 mb-4">
+                  <%= image_tag 'map.png',
+                  style: 'width: 10rem;
+                  height: auto;'
+                  %>
+                <div class="card-product-infos mt-4 mb-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <p>Origem:</p>
+                    <h2><%= r.route.origem %></h2>
+                    </div>
+                  </div>
+                  <p>Destino:</p>
+                  <h2><%= r.route.destino %></h2>
+                  <p>Data:<strong> <%= r.hr_final %></strong></p>
+                  <%= link_to "Visualizar", travel_path(r), class: "btn btn-success btn-sm m-2" %>
+                </div>
+            </div>
+        <% end %>
+            </div>
         </div>
     </div>
       </div>

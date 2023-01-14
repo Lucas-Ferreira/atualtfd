@@ -54,7 +54,8 @@ class EmpenhosController < ApplicationController
   end
 
   def destroy
-    @empenho.destroy!
+    @empenho.destroy
+    redirect_to empenhos_path, notice: "Empenho removido com sucesso"
   end
 
   def saldo

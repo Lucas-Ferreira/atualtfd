@@ -54,7 +54,7 @@ class EmpenhosController < ApplicationController
   end
 
   def destroy
-    raise
+    @empenho.destroy!
   end
 
   def saldo

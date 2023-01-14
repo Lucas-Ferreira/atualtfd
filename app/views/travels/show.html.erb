@@ -204,7 +204,9 @@
             <%= form.submit "Adicionar", class: "btn btn-primary" %>
             </div>
             <p class="text-center mt-5"><strong> Lista de comprovantes </strong></p>
-              <% current_user.comprovantes.each do |c| %>
+            <%# raise %>
+              <% Comprovante.where(travel_id: @travel.id).each do |c| %>
+
               <div class="list-group p-2">
                 <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                   <div class="d-flex w-100 justify-content-between">

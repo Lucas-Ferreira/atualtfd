@@ -318,10 +318,21 @@
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-jan23" role="tabpanel" aria-labelledby="nav-jan23-tab">
+  <div class="tab-pane fade show active p-3 mt-3" id="nav-jan23" role="tabpanel" aria-labelledby="nav-jan23-tab">
 
-    <% @jan = @rotum.travels.where(month:1, status:"A iniciar") %>
-    <%# raise %>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-tripjan-tab" data-bs-toggle="pill" data-bs-target="#pills-tripjan" type="button" role="tab" aria-controls="pills-tripjan" aria-selected="true">Viagem</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-histjan-tab" data-bs-toggle="pill" data-bs-target="#pills-histjan" type="button" role="tab" aria-controls="pills-histjan" aria-selected="false">Histórico</button>
+          </li>
+       </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-tripjan" role="tabpanel" aria-labelledby="pills-tripjan-tab" tabindex="0">
+
+           <% @jan = @rotum.travels.where(month:1, status:"A iniciar") %>
+            <%# raise %>
               <% if !@jan.empty? %>
               <% @count = @jan[0][:id] %>
               <% @jan.each do |r|  %>
@@ -362,12 +373,70 @@
                   </div>
                 </div>
               </div>
-  </div>
-    <% @count = @count + 1 %>
-    <% end %>
-   <% else %>
-    <p>Não há viagem marcada.</p>
-  <% end %>
+            </div>
+              <% @count = @count + 1 %>
+              <% end %>
+            <% else %>
+              <p>Não há viagem marcada.</p>
+            <% end %>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-histjan" role="tabpanel" aria-labelledby="pills-histjan-tab" tabindex="0">
+
+          <% @jan = @rotum.travels.where(month:1, status:"Finalizado") %>
+            <%# raise %>
+              <% if !@jan.empty? %>
+              <% @count = @jan[0][:id] %>
+              <% @jan.each do |r|  %>
+              <% @ind = "#flush-collapseOne" + "#{@count}" %>
+              <% @ind2 = "flush-collapseOne" + "#{@count}" %>
+              <% @vehicle = r.vehicles %>
+              <!-- Accordion INICÍO - DEZEMBRO -->
+            <div class="accordion" id="accordionExample2">
+              <div class="card shadow-lg">
+                <div class="card-header" id="headingThree2">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target=<%= @ind %> aria-expanded="false" aria-controls="collapseThree">
+                     <%= r.id %>
+                     <div class="m-2 btn btn-warning btn-sm"><%= r.status %></div>
+                     <div class="m-2 btn btn-success btn-sm"><%= r.hr_final %> </div>
+                    </button>
+                  </h2>
+                </div>
+                <div id=<%= @ind2 %> class="collapse" aria-labelledby="headingThree2" data-parent="#accordionExample2">
+                  <div class="card-body">
+                    <div>Partida: <strong><%= r.hr_partida %></strong></div>
+                    <div>Retorno: <strong><%= r.hr_volta %></strong></div>
+                    <div>Data: <strong><%= r.hr_final %></strong></div>
+                      <% if !@vehicle[0].present? %>
+                        <div>Veículo: <strong>0</strong></div>
+                      <% else %>
+                        <div>Veículo: <strong><%= @vehicle[0][:modelo] %></strong></div>
+                      <% end %>
+                      <% if !@vehicle[0].present? %>
+                        <div>Placa: <strong>Veículo sem placa</strong></div>
+                      <% else %>
+                        <div>Placa: <strong><%= @vehicle[0][:placa]  %></strong></div>
+                      <% end %>
+                    <div>
+                    <%= link_to "Detalhes", travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    <%= link_to "Editar", edit_travel_path(r), class: "mt-3 btn btn-primary btn-sm" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <% @count = @count + 1 %>
+              <% end %>
+            <% else %>
+              <p>Não há viagem marcada.</p>
+            <% end %>
+
+
+          </div>
+        </div>
+
 
   </div>
 

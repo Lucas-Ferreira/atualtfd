@@ -52,7 +52,7 @@ class TravelsController < ApplicationController
       @travel.status = "Em andamento"
       @travel.save
     else
-      @travel.status = "Encerrado"
+      @travel.status = "Finalizado"
       @travel.save
     end
     redirect_to travel_path(@travel)

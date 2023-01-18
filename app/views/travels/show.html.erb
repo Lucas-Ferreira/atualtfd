@@ -176,6 +176,8 @@
               <th scope="col">Endereco</th>
               <th scope="col">Destino</th>
               <th scope="col">Acompanhante</th>
+              <th class="col">Destino</th>
+              <th class="col">Partida</th>
             </tr>
           </thead>
           <tbody>
@@ -186,6 +188,18 @@
               <td><%= pa.endereco %></td>
               <td><%= pa.destino %></td>
               <td><%= pa.acompanhante %></td>
+              <td class="text-center">
+                <% if u.partida == false || u.partida == nil %>
+                   <%= link_to change_travel_path(u, travel_id: @travel.id, status: false),data: {confirm: "Tem certeza?"}, class: "btn btn-primary btn-sm" do %>
+                      <i class="fa fa-square"></i>
+                  <% end %>
+                <% else %>
+              `<%#= link_to "D", change_travel_path(u, travel_id: @travel.id, status: false), class: "btn-wide btn btn-success btn-sm" %>
+                <%= link_to change_travel_path(u, travel_id: @travel.id, status: true), data: {confirm: "Tem certeza?"}, class: "btn btn-success btn-sm" do %>
+                     <i class="fa fa-check"></i>
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
           </tbody>

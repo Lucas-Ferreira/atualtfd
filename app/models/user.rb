@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :travel_vehicles, through: :vehicles
   has_many :travels, through: :travel_vehicles
   belongs_to :account
-  has_many :saldos
-  has_many :comprovantes
+  has_many :saldos, dependent: :destroy
+  has_many :comprovantes, dependent: :destroy
   acts_as_tenant(:account)
 end

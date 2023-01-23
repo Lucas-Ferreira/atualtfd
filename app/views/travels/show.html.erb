@@ -189,8 +189,8 @@
               <td><%= pa.destino %></td>
               <td><%= pa.acompanhante %></td>
               <td class="text-center">
-                <% if u.partida == false || u.partida == nil %>
-                   <%= link_to change_travel_path(u, travel_id: @travel.id, status: false),data: {confirm: "Tem certeza?"}, class: "btn btn-primary btn-sm" do %>
+                <% if pa.partida == false || pa.partida == nil %>
+                   <%= link_to change_travel_path(pa, travel_id: @travel.id, status: false),data: {confirm: "Tem certeza?"}, class: "btn btn-primary btn-sm" do %>
                       <i class="fa fa-square"></i>
                   <% end %>
                 <% else %>

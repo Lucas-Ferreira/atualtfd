@@ -30,7 +30,7 @@ class RegistrationsController < ApplicationController
         #  data: {user: @user}
         #}
       else
-        format.html { redirect_to root_path, notice: "Usuário #{@user.email} Não criado" }
+        format.html { redirect_to root_path, notice: "Usuário #{@user.email} existente na plataforma" }
         #render :status => 400,
               #:json => {:message => @user.errors.full_messages}
       end

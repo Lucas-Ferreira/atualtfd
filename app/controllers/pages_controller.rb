@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  #skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :offline ]
 
   def home
       if current_user.role == false
@@ -13,5 +13,9 @@ class PagesController < ApplicationController
   end
 
   def moto
+  end
+
+  def offline
+    render 'offline', layout: false
   end
 end

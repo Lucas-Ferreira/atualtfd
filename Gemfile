@@ -9,6 +9,14 @@ gem 'acts_as_tenant'
 
 gem 'jquery-rails'
 
+gem 'serviceworker-rails'
+
+#gem "simple_token_authentication"
+
+
+# WebPack Rails
+  #bundle exec rake webpacker:install -> Install and generate files
+gem 'webpacker'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"

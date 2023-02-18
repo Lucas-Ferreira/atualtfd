@@ -14,16 +14,16 @@
       <div class="d-flex justify-content-center bg-white rounded-3 p-5 shadow">
       <%= form_with model: @vehicle, url: { action: "create" }, class:"row g-1 w-10", local: true do |form| %>
         <%= form.label :modelo %>
-        <%= form.text_field :modelo, class:"form-control form-control-sm col-auto" %>
+        <%= form.text_field :modelo, placeholder: 'Spin', class:"form-control form-control-sm col-auto" %>
         <% @vehicle.errors.full_messages_for(:modelo).each do |message| %>
         <p class="text-danger"><%= message %></p>
         <% end %>
         <div><%= form.label :ano %></div>
-        <%= form.text_field :ano, class:"form-control form-control-sm col-auto" %>
+        <%= form.text_field :ano, placeholder: '2023', class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :placa %></div>
-        <%= form.text_field :placa, class:"form-control form-control-sm col-auto" %>
+        <%= form.text_field :placa, placeholder: 'HFG-9090', class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :capacidade %></div>
-        <%= form.text_field :capacidade, class:"form-control form-control-sm col-auto" %>
+        <%= form.text_field :capacidade, placeholder: '7', class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :status %></div>
         <%= form.select :status,["Liberado", "Manutencão", "Defeito"], class:"form-control form-control-sm col-auto" %>
         <div><%= form.label :montadora %></div>

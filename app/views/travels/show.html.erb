@@ -104,6 +104,19 @@
     </div>
   </div>
   <!-- Finaly First Table -->
+<script>
+//const name = document.getElementById("patient_cpf");
+//console.log(name);
+document.addEventListener('keydown', function(event) { //pega o evento de precionar uma tecla
+  if(event.keyCode != 46 && event.keyCode != 8){//verifica se a tecla precionada nao e um backspace e delete
+    var i = document.getElementById("patient_cpf").value.length; //aqui pega o tamanho do input
+    if (i === 3 || i === 7) //aqui faz a divisoes colocando um ponto no terceiro e setimo indice
+      document.getElementById("patient_cpf").value = document.getElementById("patient_cpf").value + ".";
+    else if (i === 11) //aqui faz a divisao colocando o tracinho no decimo primeiro indice
+      document.getElementById("patient_cpf").value = document.getElementById("patient_cpf").value + "-";
+  }
+});
+</script>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" >
@@ -130,7 +143,7 @@
 
       <%= simple_form_for([@travel,@patient], :remote=>true) do |f| %>
         <%= f.input :name, label: "Nome" %>
-        <%= f.input :cpf, label: "CPF" %>
+        <%= f.input :cpf, label: "CPF", input_html: { maxlength: 14, size: 40}  %>
         <%= f.input :endereco, label: "Endereco" %>
         <%= f.input :cel, label: "Celular" %>
         <%= f.input :acompanhante, label: "Acompanhante" %>
@@ -244,8 +257,3 @@
 </div>
 </div>
 <% end %>
-<h1 id="bosta"></h1>
-<script>
-const name = document.getElementById("teste");
-console.log(name);
-</script>

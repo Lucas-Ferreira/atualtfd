@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "motorista", to: "pages#moto"
   get "travels", to: "travels#viagem"
   get "saldos", to: "empenhos#saldo"
+  get '/offline', to: 'pages#offline', as: :offline
+
 
   #post "patients/:id", to: "patients#change", as: :change_status
 

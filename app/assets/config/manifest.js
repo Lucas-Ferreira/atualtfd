@@ -3,3 +3,6 @@
 //= link_tree ../builds
 //= require turbolinks
 //= link manifest.json
+//= link jquery.js
+//= link jquery_ujs.js
+//= link app.js

@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: tfdv2_development
+  database: tfdatual_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: tfdv2_test
+  database: tfdatual_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: tfdv2_production
+  database: tfdatual_production
   username: tfdv2
   password: <%= ENV["TFDV2_DATABASE_PASSWORD"] %>

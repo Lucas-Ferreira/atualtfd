@@ -1,71 +1,58 @@
-<section class="h-100 gradient-form">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-xl-10">
-        <div class="card rounded-3 text-black">
-          <div class="row g-0">
-            <div class="col-lg-6">
-              <div class="card-body p-md-5 mx-md-4">
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
 
-                <div class="text-center">
-                <%= image_tag '2.png', style: 'width: 185px' %>
-                </div>
-                  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-                  <div class="form-outline mb-4">
-                    <%= f.input :email,
-                                  required: false,
-                                  autofocus: true %>
-                  </div>
-                  <div class="form-outline mb-4">
-                     <%= f.input :password,
-                                  required: false,
-                                  input_html: { autocomplete: "current-password" } %>
-                  </div>
-                  <div class="text-center pt-1 mb-5 pb-1">
-                  <%= f.button :submit, "Log in", id: "submit", class: "btn btn-lg btn-primary" %>
-                    <a class="text-muted" href="#!">Esqueceu sua senha?</a>
-                  </div>
-                   <% end %>
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 class="mb-4">Para a gestão, nada é impossível</h4>
-                <p class="small mb-0">Otimização com transparência e agilidade, gerando informação qualificada e dados técnicos. Ferramenta indispensável para bons resultados.</p>
-              </div>
-            </div>
-          </div>
+        <div class="px-1 ms-xl-4">
+          <img class="avatar-large" alt="avatar-large" src="https://www.linkpicture.com/q/2_995.png" />
         </div>
+
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), style: "width: 23rem;", data: { turbo: :false }) do |f| %>
+              <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+              <div class="form-outline mb-4">
+                <%= f.input :email,
+                    required: false,
+                    autofocus: true %>
+                </div>
+                <div class="form-outline mb-4">
+                  <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password", style: "width: 400px" } %>
+                </div>
+                <div class="text-center pt-1 mb-5 pb-5">
+                  <%= f.button :submit, "Log in", id: "submit", class: "btn btn-info btn-lg btn-block" %>
+                  <p class="text-muted" href="#!">Esqueceu sua senha?</p>
+                </div>
+            <% end %>
+
+        </div>
+
+      </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img src="https://i.ibb.co/Q9w5Bk1/clay-banks-c-Ez-MOp5-Ft-V4-unsplash.png"
+          alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
       </div>
     </div>
   </div>
 </section>
-
 <style>
-section {
-  background-color: white;
-}
-.gradient-custom-2 {
-/* fallback for old browsers */
-/*background: white;*/
 
-/* Chrome 10-25, Safari 5.1-6 */
-/*background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);*/
-background-color: rgb(97,46,53);
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-/*background: linear-gradient(to right, #2465ee, #3688d8, #3688d8, #2465ee);*/
+body {
+  height: 100%;
+}
+.bg-image-vertical {
+position: relative;
+overflow: hidden;
+background-repeat: no-repeat;
+background-position: right center;
+background-size: auto 100%;
 }
 
-@media (min-width: 768px) {
-.gradient-form {
-height: 100vh !important;
+@media (min-width: 1025px) {
+.h-custom-2 {
+height: 100%;
 }
 }
-@media (min-width: 769px) {
-.gradient-custom-2 {
-border-top-right-radius: .3rem;
-border-bottom-right-radius: .3rem;
-}
-}
-
 </style>

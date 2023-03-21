@@ -1,0 +1,64 @@
+
+<div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper cyan accent-3">
+      <a href="#!" class="brand-logo"><i data-target="slide-out" class="material-icons sidenav-trigger">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+<ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <%= image_tag("degradeblue.jpg") %>
+      </div>
+      <a href="#"><%= image_tag("apple-icon.png", class:'circle')%> </a>
+      <a href="#"><span class="white-text name">John Doe</span></a>
+      <a href="#"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+      <ul class="collapsible">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">dashboard</i>Dashboard</div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">people</i>Usuários</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="#!">Cadastro</a></li>
+          <li><a class="waves-effect" href="#!">Lista</a></li>
+        </ul>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">directions_car</i>Veículos</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="#!">Cadastro</a></li>
+          <li><a class="waves-effect" href="#!">Lista</a></li>
+        </ul>
+    </li>
+      <li>
+      <div class="collapsible-header"><i class="material-icons">location_on</i>Rotas</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="#!">Cadastro</a></li>
+          <li><a class="waves-effect" href="#!">Lista</a></li>
+        </ul>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">map</i>Municípios</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="#!">Cadastro</a></li>
+          <li><a class="waves-effect" href="#!">Lista</a></li>
+        </ul>
+    </li>
+  </ul>
+    </ul>
+
+<script>
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+});
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+</script>

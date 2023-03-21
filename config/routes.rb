@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   resources :routes do
     resources :travels do
-
     end
   end
 

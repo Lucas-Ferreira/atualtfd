@@ -78,11 +78,27 @@ li, a {
   color: #555555;
 }
 
+.tabs .tab a{
+  color:#000;
+} /*Black color to the text*/
+
+.tabs .tab a:hover {
+  background-color:#eee;
+  color:#000;
+} /*Text color on hover*/
+
+.tabs .tab a.active {
+  background-color:#888;
+  color:#000;
+ } /*Background and text color when a tab is active*/
+
+.tabs .indicator {
+  background-color:#000;
+ } /*Color of underline*/
+
 </style>
 
 <div class="container p-5">
-
-
 
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large cyan accent-3">
@@ -222,9 +238,30 @@ li, a {
 
 </div>
 
-<a class="btn-floating btn-large waves-effect"><i class="material-icons">add</i></a>
+<ul id="tabs-swipe-demo blue lighten-1" class="tabs">
+  <li class="tab col s3"><a href="#test-swipe-1">Test 1</a></li>
+  <li class="tab col s3"><a class="active" href="#test-swipe-2">Test 2</a></li>
+  <li class="tab col s3"><a href="#test-swipe-3">Test 3</a></li>
+</ul>
+  <div id="test-swipe-1" class="col s12">
+  Test 1 MOTHER
+
+    <ul id="tabs-swipe-demo" class="tabs">
+      <li class="tab col s3"><a href="#test-swipe-son1">Test 1</a></li>
+      <li class="tab col s3"><a class="active" href="#test-swipe-son2">Test 2</a></li>
+      <li class="tab col s3"><a href="#test-swipe-son3">Test 3</a></li>
+    </ul>
+      <div id="test-swipe-son1" class="col s12 blue">Test 1</div>
+      <div id="test-swipe-son2" class="col s12 red">Test 2</div>
+      <div id="test-swipe-son3" class="col s12 green">Test 3</div>
+  </div>
+
+  <div id="test-swipe-2" class="col s12">Test 2</div>
+  <div id="test-swipe-3" class="col s12">Test 3</div>
+<a href="#test-swipe-2" class="btn-floating btn-large waves-effect"><i class="material-icons">add</i></a>
 <a class="waves-effect waves-light btn-small" id="but"><i class="material-icons left">cloud</i>button</a>
 <a class="waves-effect waves-teal btn-flat">Button</a>
+
 
 
 

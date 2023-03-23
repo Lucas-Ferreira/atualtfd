@@ -17,40 +17,52 @@
       </div>
       <a href="#"><%= image_tag("apple-icon.png", class:'circle')%> </a>
       <a href="#"><span class="white-text name">John Doe</span></a>
-      <a href="#"><span class="white-text email">jdandturk@gmail.com</span></a>
+      <a href="#"><span class="white-text email"><%= current_user.email %></span></a>
     </div></li>
       <ul class="collapsible">
     <li>
-      <div class="collapsible-header"><i class="material-icons">dashboard</i>Dashboard</div>
+      <div class="collapsible-header divlink"><i class="material-icons">dashboard</i>Dashboard</div>
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons">people</i>Usuários</div>
         <ul id="slide-out" class="collapsible-body">
-          <li><a class="waves-effect" href="#!">Cadastro</a></li>
-          <li><a class="waves-effect" href="#!">Lista</a></li>
+          <li><a class="waves-effect" href="/new_sign_up">Cadastro</a></li>
+          <li><a class="waves-effect" href="/users">Lista</a></li>
         </ul>
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons">directions_car</i>Veículos</div>
         <ul id="slide-out" class="collapsible-body">
-          <li><a class="waves-effect" href="#!">Cadastro</a></li>
-          <li><a class="waves-effect" href="#!">Lista</a></li>
+          <li><a class="waves-effect" href="/vehicles/new">Cadastro</a></li>
+          <li><a class="waves-effect" href="/vehicles">Lista</a></li>
         </ul>
     </li>
       <li>
       <div class="collapsible-header"><i class="material-icons">location_on</i>Rotas</div>
         <ul id="slide-out" class="collapsible-body">
-          <li><a class="waves-effect" href="#!">Cadastro</a></li>
-          <li><a class="waves-effect" href="#!">Lista</a></li>
+          <li><a class="waves-effect" href="/routes/new">Cadastro</a></li>
+          <li><a class="waves-effect" href="/routes">Lista</a></li>
         </ul>
     </li>
+    <% if current_user.role == true && ActsAsTenant.current_tenant.name == "admin" %>
     <li>
       <div class="collapsible-header"><i class="material-icons">map</i>Municípios</div>
         <ul id="slide-out" class="collapsible-body">
-          <li><a class="waves-effect" href="#!">Cadastro</a></li>
-          <li><a class="waves-effect" href="#!">Lista</a></li>
+          <li><a class="waves-effect" href="/accounts/new">Cadastro</a></li>
+          <li><a class="waves-effect" href="/accounts/">Lista</a></li>
         </ul>
     </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">attach_money</i>Empenho</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="/empenhos/new">Cadastro</a></li>
+          <li><a class="waves-effect" href="/empenhos">Lista</a></li>
+        </ul>
+    </li>
+    <div>
+      <a href="/users/sign_out" class="btn-floating waves-effect"><i class="material-icons">power_settings_new</i></a>
+    </div>
+    <% end %>
   </ul>
     </ul>
 
@@ -61,4 +73,8 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.collapsible').collapsible();
   });
+
+$('.divlink').click(function(){
+  window.location = "/";
+});
 </script>

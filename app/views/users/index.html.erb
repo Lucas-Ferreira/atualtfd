@@ -1,5 +1,5 @@
 <%= render "shared/flashes" %>
-<%= render "shared/navbar2" %>
+<%= render "shared/navbarmat" %>
 
 <div class="container mt-5">
 
@@ -7,24 +7,23 @@
 						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-
 									<h5 class="card-title mb-0"e>Usuários Cadastrados</h5>
 								</div>
-								<table class="table table-hover my-0">
+								<table class="highlight responsive-table">
 									<thead>
 										<tr>
 											<th>Email</th>
-											<th class="d-none d-xl-table-cell">Município</th>
-											<th class="d-none d-xl-table-cell">Cargo</th>
-                      <th class="d-none d-xl-table-cell"></th>
+											<th>Município</th>
+											<th>Cargo</th>
+                      <th></th>
 										</tr>
 									</thead>
 									<tbody>
                     <% @users.each do |u| %>
 										<tr>
 											<td> <%= u.email %></td>
-											<td class="d-none d-xl-table-cell"><%= Account.find(u.account_id).name %></td>
-                      <td><span class="badge <%= u.role == true ? "bg-success" : "bg-danger"%>"><%= u.role == true ? "Admin" : "Motorista" %></span></td>
+											<td><%= Account.find(u.account_id).name %></td>
+                      <td><span class="badge <%= u.role == true ? "badge blue" : "bg-danger"%>"><%= u.role == true ? "Admin" : "Motorista" %></span></td>
                       <td><%= link_to "Deletar", user_destroy_path(u), data: { method: :delete, confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
                       <%= link_to "Editar", user_edit_path(u), class: "btn btn-warning btn-sm" %>
                       </td>
@@ -35,5 +34,43 @@
 							</div>
 						</div>
 </div>
+
+<div class="row">
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-content">
+          <table class="highlight responsive-table">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+    </div>
+  </div>
+
+
+
 
 </div>

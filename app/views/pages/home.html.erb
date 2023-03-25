@@ -184,8 +184,6 @@ li, a {
           <div class="card-content white-text">
             <div class="col s9">
               <span class="card-title"><strong>Olá</strong>, <%= current_user.email %></span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
             </div>
               <div class="col s3">
                 <%= image_tag("medicine.png")%>
@@ -243,31 +241,18 @@ li, a {
       <div class="card">
         <div class="card-content">
           <span class="card-title">Histórico</span>
-          <div class="notification">
-            <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-            <div class="notification-content">
-              <p><small>14th January</small></p>
-              <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
-            </div>
 
-            <div class="notification-actions">
-              <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
-              <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+            <div class="notification">
+              <img src='https://kitt.lewagon.com/placeholder/users/lucas-ferreira' class="avatar-large" />
+              <div class="notification-content">
+                <p><small><%= Travel.last.hr_final %></small></p>
+                <p>A viagem será realizada De <strong> <%= Travel.last.route.origem %> </strong> para <strong> <%= Travel.last.route.destino %> </strong></p>
+              </div>
+              <div class="notification-actions">
+                <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+                <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+              </div>
             </div>
-          </div>
-
-          <div class="notification">
-            <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
-            <div class="notification-content">
-              <p><small>9th January</small></p>
-              <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
-            </div>
-
-            <div class="notification-actions">
-              <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
-              <a href="#">Delete <i class="far fa-trash-alt"></i></a>
-            </div>
-        </div>
 
         </div>
       </div>

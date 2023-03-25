@@ -222,9 +222,21 @@ li, a {
     </div>
   </div>
   </div>
+    <div class="row">
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-content white-text center-align">
+          <span class="card-title">Destinos</span>
+          <div id="map_div" style="width: 800px; height: 400px;"></div>
+        <div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-	<h1 class="mt-1 mb-3"><%= Travel.where(status:"Finalizado").count %></h1>
-				<div class="mb-0">
+</div>
+\				<div class="mb-0">
 				<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i>  </span>
 				<span class="text-muted"></span>
 							</div>
@@ -238,32 +250,13 @@ li, a {
 
 </div>
 
-<ul id="tabs-swipe-demo blue lighten-1" class="tabs">
-  <li class="tab col s3"><a href="#test-swipe-1">Test 1</a></li>
-  <li class="tab col s3"><a class="active" href="#test-swipe-2">Test 2</a></li>
-  <li class="tab col s3"><a href="#test-swipe-3">Test 3</a></li>
-</ul>
-  <div id="test-swipe-1" class="col s12">
-  Test 1 MOTHER
-
-    <ul id="tabs-swipe-demo" class="tabs">
-      <li class="tab col s3"><a href="#test-swipe-son1">Test 1</a></li>
-      <li class="tab col s3"><a class="active" href="#test-swipe-son2">Test 2</a></li>
-      <li class="tab col s3"><a href="#test-swipe-son3">Test 3</a></li>
-    </ul>
-      <div id="test-swipe-son1" class="col s12 blue">Test 1</div>
-      <div id="test-swipe-son2" class="col s12 red">Test 2</div>
-      <div id="test-swipe-son3" class="col s12 green">Test 3</div>
-  </div>
-
+<!--
   <div id="test-swipe-2" class="col s12">Test 2</div>
   <div id="test-swipe-3" class="col s12">Test 3</div>
 <a href="#test-swipe-2" class="btn-floating btn-large waves-effect"><i class="material-icons">add</i></a>
 <a class="waves-effect waves-light btn-small" id="but"><i class="material-icons left">cloud</i>button</a>
 <a class="waves-effect waves-teal btn-flat">Button</a>
-
-
-
+-->
 
 <script>
 //document.getElementById("teste").addEventListener("click", display);

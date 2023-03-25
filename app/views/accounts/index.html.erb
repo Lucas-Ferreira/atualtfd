@@ -25,9 +25,9 @@
 											<td class="d-none d-xl-table-cell"><%= a.name %></td>
 											<td class="d-none d-xl-table-cell"><%= a.subdomain %></td>
                       <td class="d-none d-md-table-cell">
-                      <%= link_to "Deletar", account_path(a), data: { method: :delete, confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
-                      <%= link_to "Editar", edit_account_path(a), class: "btn btn-warning btn-sm" %>
-                      <%= link_to "Abrir", account_path(a), class: "btn btn-primary btn-sm" %>
+                      <%= link_to "Deletar", account_path(a), data: { method: :delete, confirm: "Tem certeza?" }, class: "waves-effect waves-light btn-small red darken-3" %>
+                      <%= link_to "Editar", edit_account_path(a), class: "waves-effect waves-light btn-small yellow darken-2" %>
+                      <%= link_to "Abrir", account_path(a), class: "waves-effect waves-light btn-small" %>
                       </td>
 										</tr>
                     <% end %>

@@ -3,6 +3,24 @@
 
 <style>
 
+.tabs .tab a{
+  color: black;
+} /*Black color to the text*/
+
+.tabs .tab a:hover {
+  background-color: black;
+  color: black;
+} /*Text color on hover*/
+
+.tabs .tab a.active {
+  background-color: white;
+  color:#000;
+ } /*Background and text color when a tab is active*/
+
+.tabs .indicator {
+  background-color:#000;
+ } /*Color of underline*/
+
 .modal {
  max-height: 100%;
 }
@@ -60,7 +78,7 @@ $(document).ready(function(){
         <%= form.text_field :hr_volta%>
         </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Sair</a>
       <%= form.submit "Adicionar", class: "btn btn-primary" %>
     </div>
   </div>
@@ -94,6 +112,8 @@ $(document).ready(function(){
                     <p>Partida: <%= a.hr_partida %> </p>
                     <p>Retorno: <%= a.hr_volta %></p>
                     <p>Data: <%= a.hr_final %></p>
+                    <%= link_to "Detalhes", travel_path(a), class: "waves-effect waves-light btn-small" %>
+                    <%= link_to "Editar", edit_travel_path(a), class: "waves-effect waves-light btn-small" %>
                     </div>
                   </li>
                   <% end %>

@@ -1,5 +1,5 @@
 <%= render "shared/flashes" %>
-<%= render "shared/navbar2" %>
+<%= render "shared/navbarmat" %>
 
 <div class="container mt-5 text-center">
   <p style="color: green"><%= notice %></p>
@@ -30,3 +30,8 @@
       </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

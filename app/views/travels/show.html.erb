@@ -2,6 +2,14 @@
 <%= render "shared/flashes" %>
 <%= render "shared/navbarmat" %>
 
+<style>
+
+.modal {
+ max-height: 100%;
+}
+
+</style>
+
 <div class="container mt-5">
 <!-- Init First Table -->
   <div class="row">
@@ -10,9 +18,7 @@
       <div class="card-header">
           <div class="ml-2">
           <!-- Button trigger modal -->
-        <button type="button" id="mymodal" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModall">
-          +
-        </button>
+            <a class="btn-floating waves-effect modal-trigger" href="#modal1"><i class="material-icons">add</i></a>
           </div>
         </div>
         <div class="table-responsive">
@@ -64,27 +70,6 @@
                       <% end %>
                       </td>
                     </div>
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
             </div>
                 </td>
                 </td>
@@ -104,6 +89,27 @@
     </div>
   </div>
   <!-- Finaly First Table -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+
+       <%= simple_form_for([@travel,@patient], :remote=>true) do |f| %>
+        <%= f.input :name, label: "Nome" %>
+        <%= f.input :cpf, label: "CPF", input_html: { maxlength: 14, size: 40}  %>
+        <%= f.input :endereco, label: "Endereco" %>
+        <%= f.input :cel, label: "Celular" %>
+        <%= f.input :acompanhante, label: "Acompanhante" %>
+        <%= f.input :destino, label: "Destino" %>
+        </div>
+
+
+    <div class="modal-footer">
+      <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <%= f.button :submit, "Enviar", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 <script>
 //const name = document.getElementById("patient_cpf");
 //console.log(name);
@@ -116,6 +122,10 @@ document.addEventListener('keydown', function(event) { //pega o evento de precio
       document.getElementById("patient_cpf").value = document.getElementById("patient_cpf").value + "-";
   }
 });
+
+$(document).ready(function(){
+    $('.modal').modal();
+  });
 </script>
 
 <!-- Modal -->

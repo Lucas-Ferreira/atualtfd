@@ -1,6 +1,6 @@
-<% if current_user.role == true %>
 <%= render "shared/flashes" %>
 <%= render "shared/navbarmat" %>
+<% if current_user.role == true %>
 
 <style>
 
@@ -172,8 +172,7 @@ $(document).ready(function(){
   <!-- End Modal Add Rotum -->
 
 <% else %>
-<%= render "shared/flashes" %>
-<%= render "shared/navbar" %>
+
 <div class="container">
  <div class="row mt-5">
     <div class="card shadow rounded-3 " style="--bs-border-opacity: .2;">
@@ -267,3 +266,9 @@ $(document).ready(function(){
 </div>
 </div>
 <% end %>
+
+<script>
+$(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

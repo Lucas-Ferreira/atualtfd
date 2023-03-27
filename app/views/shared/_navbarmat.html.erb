@@ -19,7 +19,7 @@
       <div class="nav-wrapper cyan accent-3">
       <a href="#!" class="brand-logo"><i data-target="slide-out" class="material-icons sidenav-trigger">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+          <li><a href=""><i class="material-icons">more_vert</i></a></li>
         </ul>
       </div>
     </nav>
@@ -30,8 +30,10 @@
       <div class="background">
         <%= image_tag("degradeblue.jpg") %>
       </div>
-      <a href="#"><%= image_tag("apple-icon.png", class:'circle')%> </a>
-      <a href="#"><span class="white-text name">John Doe</span></a>
+      <a href="#"><%#= image_tag("apple-icon.png", class:'circle')%>
+      <img src='https://kitt.lewagon.com/placeholder/users/lucas-ferreira' class="avatar-large" />
+      </a>
+      <a href="#"><span class="white-text name">Admin</span></a>
       <a href="#"><span class="white-text email"><%= current_user.email %></span></a>
     </div></li>
       <ul class="collapsible">
@@ -65,13 +67,6 @@
         <ul id="slide-out" class="collapsible-body">
           <li><a class="waves-effect" href="/accounts/new">Cadastro</a></li>
           <li><a class="waves-effect" href="/accounts/">Lista</a></li>
-        </ul>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">attach_money</i>Empenho</div>
-        <ul id="slide-out" class="collapsible-body">
-          <li><a class="waves-effect" href="/empenhos/new">Cadastro</a></li>
-          <li><a class="waves-effect" href="/empenhos">Lista</a></li>
         </ul>
     </li>
     <li>

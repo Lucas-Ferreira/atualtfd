@@ -246,7 +246,7 @@ li, a {
               <img src='https://kitt.lewagon.com/placeholder/users/lucas-ferreira' class="avatar-large" />
               <div class="notification-content">
                 <p><small><%#= Travel.last.hr_final %></small></p>
-                <% if Travel.last.route.origem == nil %>
+                <% if Travel.last == nil %>
                 <p> Nenhuma viagem encontrada </p>
                 <% end %>
                 <p>A viagem será realizada De <strong> <%= Travel.last.route.origem %> </strong> para <strong> <%= Travel.last.route.destino %> </strong></p>

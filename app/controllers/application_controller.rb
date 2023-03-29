@@ -25,6 +25,7 @@ def find_current_tenant
   end
 end
 
+
  # Filter Tenant
  #@teste = false
 #def filter_tenant

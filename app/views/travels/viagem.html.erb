@@ -1,90 +1,87 @@
-<%= render "shared/navbar" %>
+<%= render "shared/navbarmat" %>
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-12">
-      <div class="card shadow rounded-3 p-3 " style="--bs-border-opacity: .2;">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">A iniciar</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Encerrado</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-andamento-tab" data-bs-toggle="pill" data-bs-target="#pills-andamento" type="button" role="tab" aria-controls="pills-andamento" aria-selected="false">Em andamento</button>
-          </li>
-        </ul>
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-          <% @travel.each do |r| %>
-            <div class="card-product mt-4 mb-4">
-                <%= image_tag 'map.png',
-                style: 'width: 10rem;
-                height: auto;'
-                %>
-              <div class="card-product-infos mt-4 mb-4">
-                <div class="row">
-                  <div class="col-md-12">
-                  <p>Origem:</p>
-                  <h2><%= r.route.origem %></h2>
-                  </div>
-                </div>
-                <p>Destino:</p>
-                <h2><%= r.route.destino %></h2>
-                <p>Data:<strong> <%= r.hr_final %></strong></p>
-                <%= link_to "Visualizar", travel_path(r), class: "btn btn-success btn-sm m-2" %>
-              </div>
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">
+              <ul class="tabs">
+                <li class="tab col s4"><a class="active" href="#test1">A iniciar</a></li>
+                <li class="tab col s4"><a href="#test2">Em andamento</a></li>
+                <li class="tab col s4"><a href="#test3">Encerrado</a></li>
+              </ul>
             </div>
-            <p></p>
-        <% end %>
-        </div>
-        </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <% @travel_end.each do |r| %>
-            <div class="card-product mt-4 mb-4">
-                <%= image_tag 'map.png',
-                style: 'width: 10rem;
-                height: auto;'
-                %>
-              <div class="card-product-infos mt-4 mb-4">
-                <div class="row">
-                  <div class="col-md-12">
-                  <p>Origem:</p>
-                  <h2><%= r.route.origem %></h2>
+
+            <div id="test1" class="col s12">
+            <% @travel.each do |t| %>
+              <div class="col s12 m7">
+                <div class="card horizontal">
+                  <div class="card-image">
                   </div>
-                </div>
-                <p>Destino:</p>
-                <h2><%= r.route.destino %></h2>
-                <p>Data:<strong> <%= r.hr_final %></strong></p>
-                <%= link_to "Visualizar", travel_path(r), class: "btn btn-success btn-sm m-2" %>
-              </div>
-            </div>
-        <% end %>
-          </div>
-            <div class="tab-pane fade" id="pills-andamento" role="tabpanel" aria-labelledby="pills-andamento-tab">
-              <% @travel_running.each do |r| %>
-              <div class="card-product mt-4 mb-4">
-                  <%= image_tag 'map.png',
-                  style: 'width: 10rem;
-                  height: auto;'
-                  %>
-                <div class="card-product-infos mt-4 mb-4">
-                  <div class="row">
-                    <div class="col-md-12">
-                    <p>Origem:</p>
-                    <h2><%= r.route.origem %></h2>
+                  <div class="card-stacked">
+                    <div class="card-content">
+                    <p><strong>id:</strong> <%= t.id %></p>
+                    <p><strong>Destino:</strong> <%= t.route.origem %></p>
+                    <p><strong> Horário de partida:</strong> <%= t.hr_partida %></p>
+                    <p><strong> Horário de retorno:</strong> <%= t.hr_volta %></p>
+                    </div>
+                    <div class="card-action">
+                       <%= link_to "Detalhes", travel_path(t.id), class:"waves-effect waves-teal btn-flat" %>
                     </div>
                   </div>
-                  <p>Destino:</p>
-                  <h2><%= r.route.destino %></h2>
-                  <p>Data:<strong> <%= r.hr_final %></strong></p>
-                  <%= link_to "Visualizar", travel_path(r), class: "btn btn-success btn-sm m-2" %>
                 </div>
+              </div>
+              <% end %>
             </div>
-        <% end %>
+
+            <div id="test2" class="col s12">
+            <% @travel_running.each do |t| %>
+            <div class="col s12 m7">
+              <div class="card horizontal">
+                <div class="card-image">
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                  </div>
+                  <div class="card-action">
+                    <a href="#">Detalhes</a>
+                  </div>
+                </div>
+              </div>
             </div>
+            <% end %>
+            </div>
+
+
+            <div id="test3" class="col s12">
+              <% @travel_end.each do |t| %>
+              <div class="col s12 m7">
+              <div class="card horizontal">
+                <div class="card-image">
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <p><strong>id:</strong> <%= t.id %></p>
+                    <p><strong>Destino:</strong> <%= t.route.origem %></p>
+                    <p><strong> Horário de partida:</strong> <%= t.hr_partida %></p>
+                  </div>
+                  <div class="card-action">
+                    <%= link_to "Detalhes", travel_path(t.id), class:"waves-effect waves-teal btn-flat" %>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+            </div>
+          </div>
+          </span>
         </div>
-    </div>
       </div>
     </div>
+  </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('.tabs').tabs();
+  });
+</script>

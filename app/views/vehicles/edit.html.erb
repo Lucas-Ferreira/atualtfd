@@ -1,3 +1,8 @@
 <%= render "shared/navbarmat" %>
-
 <%= render "form", task: @vehicle %>
+
+<script>
+$(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

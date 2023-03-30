@@ -41,6 +41,14 @@
       <div class="collapsible-header divlink"><i class="material-icons">dashboard</i>Dashboard</div>
     </li>
     <li>
+      <div class="collapsible-header"><i class="material-icons">people</i>Viagem</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="/travels">Lista</a></li>
+        </ul>
+    </li>
+
+    <% if current_user.role == true && ActsAsTenant.current_tenant.name == "admin" %>
+    <li>
       <div class="collapsible-header"><i class="material-icons">people</i>Usuários</div>
         <ul id="slide-out" class="collapsible-body">
           <li><a class="waves-effect" href="/new_sign_up">Cadastro</a></li>
@@ -61,7 +69,6 @@
           <li><a class="waves-effect" href="/routes">Lista</a></li>
         </ul>
     </li>
-    <% if current_user.role == true && ActsAsTenant.current_tenant.name == "admin" %>
     <li>
       <div class="collapsible-header"><i class="material-icons">map</i>Municípios</div>
         <ul id="slide-out" class="collapsible-body">

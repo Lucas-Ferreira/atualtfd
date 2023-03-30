@@ -11,7 +11,6 @@
       <% else %>
         <div><h3>Saldo total de <strong> R$ <%= current_user.saldos[0].saldo_total %></strong></h3></div>
       <% end %>
-        <div class="mt-5">Você possui <strong><%= current_user.saldos.count %></strong> viagens para realizar</div>
       </h5>
       <div>
         <a href="/users/sign_out" class="btn-floating waves-effect"><i class="material-icons">power_settings_new</i></a>

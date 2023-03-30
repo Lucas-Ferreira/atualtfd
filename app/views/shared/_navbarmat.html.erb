@@ -83,7 +83,38 @@
           <li><a class="waves-effect" href="/empenhos">Lista</a></li>
         </ul>
     </li>
+    <% elsif current_user.role == true  %>
+        <li>
+      <div class="collapsible-header"><i class="material-icons">people</i>Usuários</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="/new_sign_up">Cadastro</a></li>
+          <li><a class="waves-effect" href="/users">Lista</a></li>
+        </ul>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">directions_car</i>Veículos</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="/vehicles/new">Cadastro</a></li>
+          <li><a class="waves-effect" href="/vehicles">Lista</a></li>
+        </ul>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">location_on</i>Rotas</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="/routes/new">Cadastro</a></li>
+          <li><a class="waves-effect" href="/routes">Lista</a></li>
+        </ul>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">attach_money</i>Empenho</div>
+        <ul id="slide-out" class="collapsible-body">
+          <li><a class="waves-effect" href="/empenhos/new">Cadastro</a></li>
+          <li><a class="waves-effect" href="/empenhos">Lista</a></li>
+        </ul>
+    </li>
+
     <% end %>
+
     <div id="logout_wrap">
       <a href="/users/sign_out" id="logout_div" class="btn-floating waves-effect"><i class="material-icons">power_settings_new</i></a>
     </div>
